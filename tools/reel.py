@@ -45,7 +45,7 @@ def backdrop(im):
 def overlay():
     lay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    d.text((W // 2, 150), 'ETOI｜名画の読み解き', font=serif(34), fill=(244, 240, 231, 235), anchor='mm')
+    d.text((W // 2, 150), 'ETOI｜名画の読み方', font=serif(34), fill=(244, 240, 231, 235), anchor='mm')
     d.text((W // 2, CY + int(CW * 1440 / 1080) + 70), '保存して、あとで読み返す', font=sans(32), fill=(230, 226, 216, 220), anchor='mm')
     return lay
 
