@@ -34,3 +34,5 @@ CAPTION='''
 
 #名画 #絵画 #ラトゥール #ETOI
 '''
+
+CATEGORY='仕事'

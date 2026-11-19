@@ -34,3 +34,5 @@ CAPTION='''
 
 #名画 #絵画 #クールベ #ETOI
 '''
+
+CATEGORY='信念'

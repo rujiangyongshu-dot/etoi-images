@@ -34,3 +34,5 @@ CAPTION='''
 
 #名画 #絵画 #タナー #ETOI
 '''
+
+CATEGORY='挑戦'

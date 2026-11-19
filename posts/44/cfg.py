@@ -34,3 +34,5 @@ CAPTION='''
 
 #名画 #絵画 #ドーミエ #ETOI
 '''
+
+CATEGORY='逆境'

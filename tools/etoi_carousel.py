@@ -10,6 +10,7 @@ def _f(n):
     raise SystemExit('font not found: '+n+' (apt-get install -y fonts-noto-cjk)')
 sans=lambda s:ImageFont.truetype(_f('NotoSansCJK-Medium.ttc'),s,index=0)
 serif=lambda s:ImageFont.truetype(_f('NotoSerifCJK-SemiBold.ttc'),s,index=0)
+bold=lambda s:ImageFont.truetype(_f('NotoSansCJK-Bold.ttc'),s,index=0)
 PAPER=(244,240,231); INK=(24,24,26)
 spec=importlib.util.spec_from_file_location('cfg',sys.argv[1]); C=importlib.util.module_from_spec(spec); spec.loader.exec_module(C)
 OUT=sys.argv[2]; os.makedirs(OUT,exist_ok=True)
@@ -32,6 +33,20 @@ def text(im,lines,pos=None,size=46):
     for i,ln in enumerate(lines): d.text((W/2,y+i*lh),ln,font=f,fill=(255,255,255,255),anchor='ma')
     a=np.asarray(lay)[:,:,3]; sh=Image.fromarray(np.clip(np.asarray(Image.fromarray(a).filter(ImageFilter.GaussianBlur(7)),dtype=np.float32)*3.2,0,240).astype(np.uint8))
     base=im.convert('RGBA'); base=Image.alpha_composite(base,Image.merge('RGBA',[Image.new('L',(W,H),0)]*3+[sh])); return Image.alpha_composite(base,lay).convert('RGB')
+def hook(im,lines,category):
+    """first slide (2026-11-20): big bold title bottom-left on a dark fade + 'ETOI | category' label, uniform across the grid"""
+    base=im.convert('RGBA'); g=Image.new('L',(1,H),0)
+    for y in range(H):
+        t=max(0,(y-H*.42)/(H*.58)); g.putpixel((0,y),int(225*t**1.3))
+    shade=Image.merge('RGBA',[Image.new('L',(W,H),0)]*3+[g.resize((W,H))]); base=Image.alpha_composite(base,shade)
+    size=78; f=bold(size)
+    while max(f.getlength(x) for x in lines)>936: size-=2; f=bold(size)
+    lay=Image.new('RGBA',(W,H),(0,0,0,0)); d=ImageDraw.Draw(lay); lh=int(size*1.36)
+    y=H-165-lh*len(lines)
+    for i,ln in enumerate(lines): d.text((72,y+i*lh),ln,font=f,fill=(255,255,255,255))
+    lab='ETOI ｜ '+category if category else 'ETOI'
+    d.text((74,H-118),lab,font=serif(30),fill=(236,231,220,235))
+    return Image.alpha_composite(base,lay).convert('RGB')
 def mark(im):
     d=ImageDraw.Draw(im); d.text((W-36,H-34),'ETOI',font=serif(26),fill=(255,255,255),anchor='rs',stroke_width=2,stroke_fill=(0,0,0))
     return im
@@ -48,7 +63,9 @@ def mockup(k):
 for i,s in enumerate(C.SLIDES):
     if s.get('mock'): im=mockup(s['img'])
     else:
-        im=view(s['img'],s['cam']); im=text(im,s['t'],s.get('pos'),s.get('size',40)) if s.get('t') else im
+        im=view(s['img'],s['cam'])
+        if i==0 and hasattr(C,'CATEGORY') and s.get('t'): im=hook(im,s['t'],C.CATEGORY)
+        elif s.get('t'): im=text(im,s['t'],s.get('pos'),s.get('size',40))
     im.save(f'{OUT}/{i+1:02d}.jpg',quality=90,optimize=True)
 if hasattr(C,'CAPTION'): open(f'{OUT}/caption.txt','w').write(C.CAPTION.strip()+'\n')
 th=[Image.open(f'{OUT}/{i+1:02d}.jpg').resize((270,360)) for i in range(len(C.SLIDES))]

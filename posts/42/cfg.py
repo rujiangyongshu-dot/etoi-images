@@ -33,3 +33,5 @@ CAPTION='''
 
 #名画 #絵画 #スーラ #ETOI
 '''
+
+CATEGORY='継続'
