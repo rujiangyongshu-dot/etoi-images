@@ -28,7 +28,7 @@ def call(path, data=None):
 cap = urllib.request.urlopen(RAW + f'posts/{NN}/caption.txt', timeout=30).read().decode('utf-8').strip()
 caption = f'{hook}\n\n▶ 全10枚の解説は @etoi.art の投稿で。保存して、あとで読み返せます。\n\n{cap}'[:2200]
 c = call(IG + '/media', {'media_type': 'REELS', 'video_url': RAW + f'reels/{NN}.mp4', 'cover_url': RAW + f'posts/{NN}/01.jpg',
-                         'caption': caption, 'share_to_feed': 'true'})['id']
+                         'caption': caption, 'share_to_feed': 'false'})['id']
 for _ in range(100):
     s = call(c + '?fields=status_code,status')
     if s.get('status_code') == 'FINISHED':
