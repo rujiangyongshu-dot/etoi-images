@@ -70,9 +70,10 @@ def hook(im,lines,category,en=None):
     size=78; f=bold(size)
     while max(f.getlength(x) for x in lines)>936: size-=2; f=bold(size)
     lay=Image.new('RGBA',(W,H),(0,0,0,0)); d=ImageDraw.Draw(lay); lh=int(size*1.36)
-    y=H-165-lh*len(lines)-(52 if en else 0)
+    el=wrap(d,en,sans(27),930)[:2] if en else []
+    y=H-165-lh*len(lines)-(52+36*(len(el)-1) if el else 0)
     for i,ln in enumerate(lines): d.text((72,y+i*lh),ln,font=f,fill=(255,255,255,255))
-    if en: d.text((74,H-172),wrap(d,en,sans(27),930)[0],font=sans(27),fill=(232,226,214,225))
+    for k,ln in enumerate(el): d.text((74,H-172-36*(len(el)-1)+k*36),ln,font=sans(27),fill=(232,226,214,225))
     lab='ETOI ｜ '+category if category else 'ETOI'
     d.text((74,H-118),lab,font=serif(30),fill=(236,231,220,235))
     return Image.alpha_composite(base,lay).convert('RGB')

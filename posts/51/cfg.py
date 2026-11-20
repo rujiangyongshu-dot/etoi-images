@@ -1,15 +1,15 @@
 IMAGES={'d':'src.jpg'}
 S=48
 SLIDES=[
- {'img':'d','cam':(0.80,0.40,1.00),'t':['11月生まれの人へ','鮮やかすぎて、疑われた紅葉。']},
- {'img':'d','cam':(0.50,0.50,1.90),'t':['実はこれ、ロンドンで','描かれたアメリカの秋。'],'size':S},
- {'img':'d','cam':(0.66,0.52,0.45),'t':['縦約1.5m、横約2.7m。','秋の川を見渡す大画面だ。'],'size':S},
- {'img':'d','cam':(0.10,0.35,0.50),'t':['イギリスの人々は','こんな紅葉はないと疑った。'],'size':S},
- {'img':'d','cam':(0.90,0.38,0.45),'t':['画家は絵の横に','本物の紅葉を並べて見せた。'],'size':S},
- {'img':'d','cam':(0.28,0.55,0.60),'t':['描いたのは元建築家。','14歳で建築事務所に入った。'],'size':S},
- {'img':'d','cam':(0.50,0.30,0.60),'t':['翌1861年、画家は','ヴィクトリア女王に謁見。'],'size':S},
- {'img':'d','cam':(0.68,0.84,0.35),'t':['のちに絵が売れなくなり、','建てた豪邸を手放した。'],'size':S},
- {'img':'d','cam':(0.55,0.50,1.00),'t':['疑われた色も、本物なら','いつか伝わるのかもしれません。'],'size':S},
+ {'img':'d','cam':(0.80,0.40,1.00),'t':['11月生まれの人へ','鮮やかすぎて、疑われた紅葉。'],'en':'For those born in November: autumn colors so vivid, no one believed them.'},
+ {'img':'d','cam':(0.50,0.50,1.90),'t':['実はこれ、ロンドンで','描かれたアメリカの秋。'],'size':S,'en':'In fact, this American autumn was painted in London.'},
+ {'img':'d','cam':(0.66,0.52,0.45),'t':['縦約1.5m、横約2.7m。','秋の川を見渡す大画面だ。'],'size':S,'en':'About 1.5 m tall and 2.7 m wide: a sweeping view of the river in fall.'},
+ {'img':'d','cam':(0.10,0.35,0.50),'t':['イギリスの人々は','こんな紅葉はないと疑った。'],'size':S,'en':'The British refused to believe leaves could turn these colors.'},
+ {'img':'d','cam':(0.90,0.38,0.45),'t':['画家は絵の横に','本物の紅葉を並べて見せた。'],'size':S,'en':'So the painter displayed real autumn leaves beside the canvas.'},
+ {'img':'d','cam':(0.28,0.55,0.60),'t':['描いたのは元建築家。','14歳で建築事務所に入った。'],'size':S,'en':'He began as an architect, entering an office at 14.'},
+ {'img':'d','cam':(0.50,0.30,0.60),'t':['翌1861年、画家は','ヴィクトリア女王に謁見。'],'size':S,'en':'The next year, 1861, he was received by Queen Victoria.'},
+ {'img':'d','cam':(0.68,0.84,0.35),'t':['のちに絵が売れなくなり、','建てた豪邸を手放した。'],'size':S,'en':'Later his paintings stopped selling, and he gave up the mansion he had built.'},
+ {'img':'d','cam':(0.55,0.50,1.00),'t':['疑われた色も、本物なら','いつか伝わるのかもしれません。'],'size':S,'en':'Colors once doubted may, if they are true, be understood someday.'},
  {'img':'d','mock':True},
 ]
 CAPTION='''

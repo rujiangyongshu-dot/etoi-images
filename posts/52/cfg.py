@@ -1,15 +1,15 @@
 IMAGES={'d':'src.jpg'}
 S=48
 SLIDES=[
- {'img':'d','cam':(0.62,0.48,1.00),'t':['庭の池だけを、','約250枚も描いた男。']},
- {'img':'d','cam':(0.50,0.50,1.35),'t':['実はこの池は、','モネが自分で造らせたもの。'],'size':S},
- {'img':'d','cam':(0.62,0.42,0.62),'t':['空も岸も描かない。','水面だけを切り取った。'],'size':S},
- {'img':'d','cam':(0.40,0.30,0.40),'t':['映っているのは木々と雲。','本物の空は画面にない。'],'size':S},
- {'img':'d','cam':(0.80,0.42,0.35),'t':['本人いわく、この水の風景に','「取りつかれてしまった」。'],'size':S},
- {'img':'d','cam':(0.14,0.72,0.35),'t':['この1枚にも、描いては','塗りつぶした跡が残る。'],'size':S},
- {'img':'d','cam':(0.62,0.78,0.30),'t':['個展は延期を重ね、','気に入らない絵は壊した。'],'size':S},
- {'img':'d','cam':(0.75,0.22,0.40),'t':['1909年、48枚の個展は','大成功に終わった。'],'size':S},
- {'img':'d','cam':(0.50,0.55,0.90),'t':['壊しては描き直した日々が','名作の正体なのかもしれません。'],'size':S},
+ {'img':'d','cam':(0.62,0.48,1.00),'t':['庭の池だけを、','約250枚も描いた男。'],'en':'The man who painted nothing but his garden pond, about 250 times.'},
+ {'img':'d','cam':(0.50,0.50,1.35),'t':['実はこの池は、','モネが自分で造らせたもの。'],'size':S,'en':'In fact, Monet had this pond built himself.'},
+ {'img':'d','cam':(0.62,0.42,0.62),'t':['空も岸も描かない。','水面だけを切り取った。'],'size':S,'en':'No sky, no banks: only the surface of the water.'},
+ {'img':'d','cam':(0.40,0.30,0.40),'t':['映っているのは木々と雲。','本物の空は画面にない。'],'size':S,'en':"What you see are reflections of trees and clouds. The real sky isn't in the picture."},
+ {'img':'d','cam':(0.80,0.42,0.35),'t':['本人いわく、この水の風景に','「取りつかれてしまった」。'],'size':S,'en':'In his words, these water landscapes had become “an obsession.”'},
+ {'img':'d','cam':(0.14,0.72,0.35),'t':['この1枚にも、描いては','塗りつぶした跡が残る。'],'size':S,'en':'Even this canvas shows traces of painting over and over.'},
+ {'img':'d','cam':(0.62,0.78,0.30),'t':['個展は延期を重ね、','気に入らない絵は壊した。'],'size':S,'en':'He kept postponing the show and destroyed works he disliked.'},
+ {'img':'d','cam':(0.75,0.22,0.40),'t':['1909年、48枚の個展は','大成功に終わった。'],'size':S,'en':'In 1909, his exhibition of 48 paintings was a great success.'},
+ {'img':'d','cam':(0.50,0.55,0.90),'t':['壊しては描き直した日々が','名作の正体なのかもしれません。'],'size':S,'en':'Perhaps those days of destroying and repainting are what a masterpiece is made of.'},
  {'img':'d','mock':True},
 ]
 CAPTION='''
