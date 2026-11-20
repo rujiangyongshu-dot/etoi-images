@@ -31,7 +31,7 @@ caption = f'{hook}\n\n▶ 全10枚の解説は @etoi.art の投稿で。保存�
 c = None; used = None; errs = []
 for aid in AIDS:
     r = call(IG + '/media', {'media_type': 'REELS', 'video_url': RAW + f'reels/{NN}.mp4', 'cover_url': RAW + f'posts/{NN}/01.jpg',
-                             'caption': caption, 'share_to_feed': 'true',
+                             'caption': caption, 'share_to_feed': 'false',
                              'audio_configuration': json.dumps({'audio_id': aid, 'audio_volume': 100, 'video_volume': 0})})
     if 'id' not in r:
         errs.append({aid: r.get('error')}); continue
