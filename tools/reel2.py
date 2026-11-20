@@ -68,7 +68,18 @@ for i, s in enumerate(shots):
         if cat:
             dd = ImageDraw.Draw(L); dd.text((W / 2, H * .5 + 190), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
     else:
-        L = caption(s['t'], size=54, y=H * .5)
+        L = caption(s['t'], size=54, y=(H * .66) if s.get('en') else (H * .5))
+    en = s.get('en')
+    if en:  # 英語の小さな字幕（2026-11-20）。日本語の下、リールの操作ボタンにかからない高さ
+        dd = ImageDraw.Draw(L); fe = ImageFont.truetype(_f('NotoSansCJK-Medium.ttc'), 30, index=0)
+        words = en.split(' '); rows = ['']
+        for w in words:
+            t = (rows[-1] + ' ' + w).strip()
+            if dd.textlength(t, font=fe) <= 900: rows[-1] = t
+            else: rows.append(w)
+        ey = (H * .5 + 260) if i == 0 else (H * .66 + 135)
+        for k, r in enumerate(rows[:2]):
+            dd.text((W / 2, ey + k * 42), r, font=fe, fill=(232, 226, 214, 225), anchor='ma', stroke_width=2, stroke_fill=(0, 0, 0, 120))
     layers.append(L)
 
 def shot_frame(i, t):  # t: 0..1 within shot
