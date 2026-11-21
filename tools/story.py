@@ -22,7 +22,11 @@ sans = lambda s: font('NotoSansCJK-Medium.ttc', s)
 bold = lambda s: font('NotoSansCJK-Bold.ttc', s)
 serif = lambda s: font('NotoSerifCJK-SemiBold.ttc', s)
 
-src, cap_path, out = sys.argv[1], sys.argv[2], sys.argv[3]
+args = [a for a in sys.argv[1:] if not a.startswith('--')]
+opt = dict(a[2:].split('=', 1) for a in sys.argv[1:] if a.startswith('--') and '=' in a)
+src, cap_path, out = args[0], args[1], args[2]
+LABEL = opt.get('label', 'NEW POST'); CTA = opt.get('cta', 'この続きは、投稿で。全10枚')
+BTN = opt.get('btn', '左上の @etoi.art をタップして投稿へ')
 slide = Image.open(src).convert('RGB')
 cap = open(cap_path, encoding='utf-8').read().strip().splitlines()
 first = next((l for l in cap if l.strip()), '')
@@ -44,6 +48,7 @@ d = ImageDraw.Draw(im)
 
 # the post's first slide, framed
 cw = 840; ch = int(cw * slide.height / slide.width)
+if ch > 1150: ch = 1150; cw = int(ch * slide.width / slide.height)
 card = slide.resize((cw, ch), Image.LANCZOS)
 x = (W - cw) // 2; y = 340
 sh = Image.new('L', (W, H), 0)
@@ -55,8 +60,9 @@ d.rectangle([x - 6, y - 6, x + cw + 6, y + ch + 6], fill=(244, 240, 231))
 im.paste(card, (x, y))
 
 # top: label + title
-d.rounded_rectangle([W // 2 - 120, 196, W // 2 + 120, 252], radius=28, fill=(244, 240, 231))
-d.text((W // 2, 224), 'NEW POST', font=bold(30), fill=(24, 24, 26), anchor='mm')
+lw = max(240, int(bold(30).getlength(LABEL)) + 70)
+d.rounded_rectangle([W // 2 - lw // 2, 196, W // 2 + lw // 2, 252], radius=28, fill=(244, 240, 231))
+d.text((W // 2, 224), LABEL, font=bold(30), fill=(24, 24, 26), anchor='mm')
 t = title
 f = sans(40)
 while f.getlength(t) > 960 and f.size > 26:
@@ -68,10 +74,13 @@ yb = y + ch + 60
 if painter:
     d.text((W // 2, yb), painter, font=sans(30), fill=(220, 214, 200), anchor='mm')
     yb += 62
-d.text((W // 2, yb), 'この続きは、投稿で。全10枚', font=bold(46), fill=(255, 255, 255), anchor='mm')
+fc = bold(46)
+while fc.getlength(CTA) > 980 and fc.size > 30: fc = bold(fc.size - 2)
+d.text((W // 2, yb), CTA, font=fc, fill=(255, 255, 255), anchor='mm')
 yb += 78
-d.rounded_rectangle([W // 2 - 330, yb - 40, W // 2 + 330, yb + 40], radius=40, fill=(244, 240, 231))
-d.text((W // 2, yb), '左上の @etoi.art をタップして投稿へ', font=sans(32), fill=(24, 24, 26), anchor='mm')
+bw = max(330, int(sans(32).getlength(BTN)) // 2 + 50)
+d.rounded_rectangle([W // 2 - bw, yb - 40, W // 2 + bw, yb + 40], radius=40, fill=(244, 240, 231))
+d.text((W // 2, yb), BTN, font=sans(32), fill=(24, 24, 26), anchor='mm')
 d.text((W // 2, H - 190), 'ETOI  答えのない世界で、自分の答えを描く。', font=serif(26), fill=(200, 196, 186), anchor='mm')
 im.save(out, quality=90, optimize=True)
 print(out, title, painter)
