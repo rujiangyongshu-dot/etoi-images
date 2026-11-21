@@ -1,15 +1,15 @@
 IMAGES={'d':'src.jpg'}
 S=48
 SLIDES=[
- {'img':'d','cam':(0.52,0.47,0.92),'t':['踊り子を約1500点。','描き続けた画家の一枚。'],'size':S},
- {'img':'d','cam':(0.84,0.50,0.42),'t':['杖をつく老人は、実在の','バレエ教師ペロー。'],'size':S},
- {'img':'d','cam':(0.60,0.42,0.32),'t':['中央の少女は、いま','試験の真っ最中だ。'],'size':S},
- {'img':'d','cam':(0.86,0.33,0.26),'t':['奥には母親たちの姿。','20人を超える人が集う。'],'size':S},
- {'img':'d','cam':(0.33,0.32,0.22),'t':['注文主は人気歌手フォール。','鏡の横に彼の演目の貼り紙。'],'size':S},
- {'img':'d','cam':(0.62,0.27,0.45),'t':['でも、この稽古場は架空。','オペラ座は前年に焼けていた。'],'size':S},
- {'img':'d','cam':(0.36,0.62,0.36),'t':['1874年、父が亡くなり','弟の巨額の借金が発覚する。'],'size':S},
- {'img':'d','cam':(0.22,0.72,0.40),'t':['晩年は目を病みながら、','踊り子を描き続けた。'],'size':S},
- {'img':'d','cam':(0.50,0.50,1.00),'t':['繰り返した数だけ、','目は深くなるのかもしれません。'],'size':S},
+ {'img':'d','cam':(0.52,0.47,0.92),'t':['踊り子を約1500点。','描き続けた画家の一枚。'],'size':S, 'en':'About 1,500 works of dancers — this is one of them.'},
+ {'img':'d','cam':(0.84,0.50,0.42),'t':['杖をつく老人は、実在の','バレエ教師ペロー。'],'size':S, 'en':'The old man with the cane is a real ballet master, Jules Perrot.'},
+ {'img':'d','cam':(0.60,0.42,0.32),'t':['中央の少女は、いま','試験の真っ最中だ。'],'size':S, 'en':'The girl at the center is in the middle of an exam.'},
+ {'img':'d','cam':(0.86,0.33,0.26),'t':['奥には母親たちの姿。','20人を超える人が集う。'],'size':S, 'en':'Mothers wait at the back; more than 20 people fill the room.'},
+ {'img':'d','cam':(0.33,0.32,0.22),'t':['注文主は人気歌手フォール。','鏡の横に彼の演目の貼り紙。'],'size':S, 'en':'It was commissioned by the star singer Faure; a poster for one of his roles hangs by the mirror.'},
+ {'img':'d','cam':(0.62,0.27,0.45),'t':['でも、この稽古場は架空。','オペラ座は前年に焼けていた。'],'size':S, 'en':'But this studio is imaginary: the Paris Opéra had burned down the year before.'},
+ {'img':'d','cam':(0.36,0.62,0.36),'t':['1874年、父が亡くなり','弟の巨額の借金が発覚する。'],'size':S, 'en':'In 1874 his father died, and his brother’s huge debts came to light.'},
+ {'img':'d','cam':(0.22,0.72,0.40),'t':['晩年は目を病みながら、','踊り子を描き続けた。'],'size':S, 'en':'Even as his eyesight failed in later years, he kept painting dancers.'},
+ {'img':'d','cam':(0.50,0.50,1.00),'t':['繰り返した数だけ、','目は深くなるのかもしれません。'],'size':S, 'en':'Perhaps every repetition makes the eye a little deeper.'},
  {'img':'d','mock':True},
 ]
 CAPTION='''
@@ -34,7 +34,14 @@ CAPTION='''
 
 💬 何百回くり返しても飽きない仕事、あなたにもありますか？
 
-#名画 #絵画 #ドガ #バレエ #ETOI
+🔖 保存しておくと、美術館で本物を見るときに役立ちます。この話を届けたい人がいたら、送ってあげてください。
+
+🌐 English
+The Dance Class (1874) — Edgar Degas
+Degas painted dancers in some 1,500 works. This imaginary rehearsal, commissioned by the baritone Jean-Baptiste Faure, was made in the year his father died and his brother’s heavy debts came to light — and he kept painting dancers even as his eyesight failed.
+Perhaps every repetition makes the eye a little deeper.
+
+#名画 #名画解説 #絵画 #ドガ #バレエ
 '''
 
 CATEGORY='継続'

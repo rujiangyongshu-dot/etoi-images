@@ -1,15 +1,15 @@
 IMAGES={'d':'src.jpg'}
 S=48
 SLIDES=[
- {'img':'d','cam':(0.50,0.38,0.76),'t':['この9歳の少女は','なぜ笑っていないのか。'],'size':S},
- {'img':'d','cam':(0.50,0.25,0.42),'t':['モデルは銀行家の娘','マーダ・プリマヴェージ。'],'size':S},
- {'img':'d','cam':(0.48,0.36,0.30),'t':['腰に手を当て、まっすぐ立つ。','本人いわく「おてんば」。'],'size':S},
- {'img':'d','cam':(0.50,0.56,0.52),'t':['クリムトはポーズや服を変え','何枚も下絵を描いた。'],'size':S},
- {'img':'d','cam':(0.80,0.30,0.45),'t':['その数年前、この画家は','国の大仕事を自ら降りていた。'],'size':S},
- {'img':'d','cam':(0.20,0.58,0.30),'t':['大学の天井画に、教授たちが','反対の署名を集めたのだ。'],'size':S},
- {'img':'d','cam':(0.74,0.78,0.26),'t':['彼は前金3万クローネを返し','自分の絵を買い戻した。'],'size':S},
- {'img':'d','cam':(0.86,0.77,0.26),'t':['少女は2000年まで生き、','戦後はカナダへ渡った。'],'size':S},
- {'img':'d','cam':(0.50,0.50,1.00),'t':['自分の立ち方を選べる人が','強いのかもしれません。'],'size':S},
+ {'img':'d','cam':(0.50,0.38,0.76),'t':['この9歳の少女は','なぜ笑っていないのか。'],'size':S, 'en':'Why isn’t this nine-year-old girl smiling?'},
+ {'img':'d','cam':(0.50,0.25,0.42),'t':['モデルは銀行家の娘','マーダ・プリマヴェージ。'],'size':S, 'en':'The sitter is Mäda Primavesi, a banker’s daughter.'},
+ {'img':'d','cam':(0.48,0.36,0.30),'t':['腰に手を当て、まっすぐ立つ。','本人いわく「おてんば」。'],'size':S, 'en':'Hand on her hip, standing straight — a “tomboy,” in her own words.'},
+ {'img':'d','cam':(0.50,0.56,0.52),'t':['クリムトはポーズや服を変え','何枚も下絵を描いた。'],'size':S, 'en':'Klimt made many studies, changing her pose and dress.'},
+ {'img':'d','cam':(0.80,0.30,0.45),'t':['その数年前、この画家は','国の大仕事を自ら降りていた。'],'size':S, 'en':'A few years earlier, this artist had walked away from a major state commission.'},
+ {'img':'d','cam':(0.20,0.58,0.30),'t':['大学の天井画に、教授たちが','反対の署名を集めたのだ。'],'size':S, 'en':'Professors had gathered signatures against his university ceiling paintings.'},
+ {'img':'d','cam':(0.74,0.78,0.26),'t':['彼は前金3万クローネを返し','自分の絵を買い戻した。'],'size':S, 'en':'He returned the 30,000-crown advance and bought his paintings back.'},
+ {'img':'d','cam':(0.86,0.77,0.26),'t':['少女は2000年まで生き、','戦後はカナダへ渡った。'],'size':S, 'en':'Mäda lived until 2000, moving to Canada after the war.'},
+ {'img':'d','cam':(0.50,0.50,1.00),'t':['自分の立ち方を選べる人が','強いのかもしれません。'],'size':S, 'en':'Perhaps strength belongs to those who choose how they stand.'},
  {'img':'d','mock':True},
 ]
 CAPTION='''
@@ -34,7 +34,14 @@ CAPTION='''
 
 💬 周りに合わせず「自分の立ち方」を選んだこと、あなたにもありますか？
 
-#名画 #絵画 #クリムト #ETOI
+🔖 保存しておくと、美術館で本物を見るときに役立ちます。この話を届けたい人がいたら、送ってあげてください。
+
+🌐 English
+Mäda Primavesi (1912–13) — Gustav Klimt
+Klimt made many studies before settling on this pose: a nine-year-old banker’s daughter standing firm, hand on hip, unsmiling. Years earlier, after professors protested his ceiling paintings for the University of Vienna, he had repaid the 30,000-crown advance and bought the works back.
+Perhaps strength belongs to those who choose how they stand.
+
+#名画 #名画解説 #絵画 #クリムト #美術館
 '''
 
 CATEGORY='信念'
