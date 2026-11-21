@@ -1,15 +1,15 @@
 IMAGES={'d':'src.jpg'}
 S=48
 SLIDES=[
- {'img':'d','cam':(0.33,0.50,1.0),'t':['マネの絵が落ちた年、','彼女の絵は入選した。']},
- {'img':'d','cam':(0.50,0.50,1.25),'t':['題は《鉄道》。','でも、列車は見えない。'],'size':S},
- {'img':'d','cam':(0.24,0.42,0.50),'t':['モデルの名はムーラン。','《オランピア》の裸婦だ。'],'size':S},
- {'img':'d','cam':(0.22,0.70,0.36),'t':['膝には眠る子犬と、','開いたままの本。'],'size':S},
- {'img':'d','cam':(0.62,0.38,0.62),'t':['少女は柵の向こうの','白い蒸気を見ている。'],'size':S},
- {'img':'d','cam':(0.25,0.46,0.66),'t':['1874年のサロンに入選。','マネが彼女を描いた最後の絵だ。'],'size':S},
- {'img':'d','cam':(0.33,0.74,0.40),'t':['その後、彼女は絵を学び、','描く側に回った。'],'size':S},
- {'img':'d','cam':(0.95,0.48,0.55),'t':['1876年、彼女は入選。','同じ年、マネは落選した。'],'size':S},
- {'img':'d','cam':(0.52,0.50,1.0),'t':['描かれる側から、描く側へ。','立場は変えられるのかもしれません。'],'size':S},
+ {'img':'d','cam':(0.33,0.50,1.0),'t':['マネの絵が落ちた年、','彼女の絵は入選した。'],'en':"The year Manet's painting was rejected, hers was accepted."},
+ {'img':'d','cam':(0.50,0.50,1.25),'t':['題は《鉄道》。','でも、列車は見えない。'],'size':S,'en':"It's called “The Railway,” yet no train is in sight."},
+ {'img':'d','cam':(0.24,0.42,0.50),'t':['モデルの名はムーラン。','《オランピア》の裸婦だ。'],'size':S,'en':'The model is Victorine Meurent, the nude in “Olympia.”'},
+ {'img':'d','cam':(0.22,0.70,0.36),'t':['膝には眠る子犬と、','開いたままの本。'],'size':S,'en':'On her lap, a sleeping puppy and an open book.'},
+ {'img':'d','cam':(0.62,0.38,0.62),'t':['少女は柵の向こうの','白い蒸気を見ている。'],'size':S,'en':'The girl looks through the railings at the white steam.'},
+ {'img':'d','cam':(0.25,0.46,0.66),'t':['1874年のサロンに入選。','マネが彼女を描いた最後の絵だ。'],'size':S,'en':"Accepted at the 1874 Salon, it was Manet's last painting of her."},
+ {'img':'d','cam':(0.33,0.74,0.40),'t':['その後、彼女は絵を学び、','描く側に回った。'],'size':S,'en':'Later she studied painting and became an artist herself.'},
+ {'img':'d','cam':(0.95,0.48,0.55),'t':['1876年、彼女は入選。','同じ年、マネは落選した。'],'size':S,'en':"In 1876 her work was accepted. That same year, Manet's was rejected."},
+ {'img':'d','cam':(0.52,0.50,1.0),'t':['描かれる側から、描く側へ。','立場は変えられるのかもしれません。'],'size':S,'en':'From the one being painted to the one who paints: perhaps our position can change.'},
  {'img':'d','mock':True},
 ]
 CAPTION='''
@@ -36,6 +36,11 @@ CAPTION='''
 💬 あなたが「見られる側」から「つくる側」に回れるとしたら、何から始めますか？
 
 🔖 保存しておくと、美術館で本物を見るときに役立ちます。この話を届けたい人がいたら、送ってあげてください。
+
+🌐 English
+The Railway (1873) — Édouard Manet
+No train is visible, only steam beyond the railings. The model, Victorine Meurent, also posed for “Olympia.” After this, Manet's last painting of her, she studied art herself, and in 1876 she was accepted at the Salon the same year Manet was rejected.
+From the one being painted to the one who paints: perhaps our position can change.
 
 #名画 #名画解説 #絵画 #マネ #美術館
 '''
