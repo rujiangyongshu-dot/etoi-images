@@ -63,7 +63,7 @@ XF = getattr(C, 'XF', 0.5); END = getattr(C, 'END', 3.0); ZOOM = getattr(C, 'ZOO
 ease = lambda t: t * t * (3 - 2 * t)
 layers = []
 for i, s in enumerate(shots):
-    if i == 0:
+    if i == 0 or s.get('hook'):  # 'hook':True＝1ショット目と同じ見せ方（部屋の画像の次に同じフックを続ける）
         cat = getattr(C, 'CATEGORY', '')
         L = caption(s['t'], size=getattr(C, 'HSIZE', 68), y=H * getattr(C, 'HOOK_Y', .5), font=bold)
         if cat:
@@ -78,7 +78,7 @@ for i, s in enumerate(shots):
             t = (rows[-1] + ' ' + w).strip()
             if dd.textlength(t, font=fe) <= 900: rows[-1] = t
             else: rows.append(w)
-        ey = (H * .5 + 260) if i == 0 else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
+        ey = (H * .5 + 260) if (i == 0 or s.get('hook')) else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
         for k, r in enumerate(rows[:2]):
             dd.text((W / 2, ey + k * 42), r, font=fe, fill=(232, 226, 214, 225), anchor='ma', stroke_width=2, stroke_fill=(0, 0, 0, 120))
     layers.append(L)
@@ -88,7 +88,7 @@ def shot_frame(i, t):  # t: 0..1 within shot
     # ゆっくり寄る（1.18倍→1.0倍）、少し横に流す
     z = ZOOM - (ZOOM - 1.0) * ease(t); dx = (0.012 if i % 2 else -0.012) * (1 - ease(t))
     fr = Image.new('RGB', (W, H), (14, 13, 12)) if s.get('img') is None else view(s['img'], cx + dx, cy, min(h * z, 1.0))
-    a = 1.0 if i == 0 else min(1, t * DUR[i] / 0.3)  # 1枚目は最初のコマから文字を出す
+    a = 1.0 if (i == 0 or s.get('hook')) else min(1, t * DUR[i] / 0.3)  # 1枚目は最初のコマから文字を出す
     L = layers[i] if a >= 1 else Image.fromarray((np.asarray(layers[i]) * np.array([1, 1, 1, a])).astype(np.uint8))
     return Image.alpha_composite(fr.convert('RGBA'), L).convert('RGB')
 
