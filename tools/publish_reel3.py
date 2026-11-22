@@ -34,6 +34,17 @@ tags = re.findall(r'#\S+', caption.strip().splitlines()[-1])
 if len(tags) > 5: prob.append('ハッシュタグが5個を超える')
 if not exists(RAW + f'reels/{RID}.mp4'): prob.append('動画がない')
 if not exists(RAW + f'reels/{RID}/story.jpg'): prob.append('ストーリー画像がない')
+# 制作基準 v2（2026-11-22）：黒い画面から始めない／長さ16秒以内
+first = next((l for l in cfg.splitlines() if "'t':" in l), '')
+if "'img':None" in first.replace(' ', ''): prob.append('1ショット目が黒い画面（v2では絵の寄りから始める）')
+try:
+    ns = {}; exec(compile(cfg, 'cfg', 'exec'), {'__builtins__': {}}, ns)
+    nshot = len([x for x in ns.get('SLIDES', []) if not x.get('mock')])
+    total = sum(ns['DUR']) if ns.get('DUR') else (3.4 + 3.6 * max(0, nshot - 2) + 4.2)
+    total += ns.get('END', 3.0)
+    if total > 16.5: prob.append(f'長さ約{total:.0f}秒（v2では16秒以内）')
+except Exception as e:
+    prob.append('cfg.py を読めない: ' + str(e)[:60])
 if prob: raise SystemExit(json.dumps({'error': 'rule_gate', 'rid': RID, 'problems': prob}, ensure_ascii=False))
 c = used = None; errs = []
 for aid in meta['audio_ids']:

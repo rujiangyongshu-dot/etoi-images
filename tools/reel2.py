@@ -53,23 +53,23 @@ def endcard(k):
     d.text((W / 2, 250), 'ETOI｜名画の読み方', font=serif(44), fill=(236, 231, 220), anchor='ma')
     end1 = getattr(C, 'ENDCARD', '全10枚の解説は、プロフィールの投稿で')
     d.text((W / 2, y + fh + 90), end1, font=serif(40), fill=(236, 231, 220), anchor='ma')
-    d.text((W / 2, y + fh + 160), '答えのない世界で、自分の答えを描く。', font=serif(30), fill=(180, 172, 160), anchor='ma')
+    d.text((W / 2, y + fh + 160), getattr(C, 'ENDCARD2', '答えのない世界で、自分の答えを描く。'), font=serif(getattr(C, 'ENDCARD2_SIZE', 30)), fill=(236, 220, 170) if hasattr(C, 'ENDCARD2') else (180, 172, 160), anchor='ma')
     return im
 
 shots = [s for s in C.SLIDES if not s.get('mock')]
 mock = next((s for s in C.SLIDES if s.get('mock')), shots[0])
 DUR = list(getattr(C, 'DUR', None) or ([3.4] + [3.6] * (len(shots) - 2) + [4.2]))
-XF = 0.5; END = getattr(C, 'END', 3.0)
+XF = getattr(C, 'XF', 0.5); END = getattr(C, 'END', 3.0); ZOOM = getattr(C, 'ZOOM', 1.18)
 ease = lambda t: t * t * (3 - 2 * t)
 layers = []
 for i, s in enumerate(shots):
     if i == 0:
         cat = getattr(C, 'CATEGORY', '')
-        L = caption(s['t'], size=68, y=H * .5, font=bold)
+        L = caption(s['t'], size=getattr(C, 'HSIZE', 68), y=H * getattr(C, 'HOOK_Y', .5), font=bold)
         if cat:
             dd = ImageDraw.Draw(L); dd.text((W / 2, H * .5 + 190), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
     else:
-        L = caption(s['t'], size=s.get('size', 54), y=(H * .5) if s.get('mid') else ((H * .66) if s.get('en') else (H * .5)))
+        L = caption(s['t'], size=s.get('size', getattr(C, 'TSIZE', 54)), y=(H * .5) if s.get('mid') else ((H * .66) if s.get('en') else (H * .5)))
     en = s.get('en')
     if en:  # 英語の小さな字幕（2026-11-20）。日本語の下、リールの操作ボタンにかからない高さ
         dd = ImageDraw.Draw(L); fe = ImageFont.truetype(_f('NotoSansCJK-Medium.ttc'), 30, index=0)
@@ -86,9 +86,9 @@ for i, s in enumerate(shots):
 def shot_frame(i, t):  # t: 0..1 within shot
     s = shots[i]; cx, cy, h = s['cam']
     # ゆっくり寄る（1.18倍→1.0倍）、少し横に流す
-    z = 1.18 - 0.18 * ease(t); dx = (0.012 if i % 2 else -0.012) * (1 - ease(t))
+    z = ZOOM - (ZOOM - 1.0) * ease(t); dx = (0.012 if i % 2 else -0.012) * (1 - ease(t))
     fr = Image.new('RGB', (W, H), (14, 13, 12)) if s.get('img') is None else view(s['img'], cx + dx, cy, min(h * z, 1.0))
-    a = min(1, t * DUR[i] / 0.45)  # 字幕フェードイン
+    a = 1.0 if i == 0 else min(1, t * DUR[i] / 0.3)  # 1枚目は最初のコマから文字を出す
     L = layers[i] if a >= 1 else Image.fromarray((np.asarray(layers[i]) * np.array([1, 1, 1, a])).astype(np.uint8))
     return Image.alpha_composite(fr.convert('RGBA'), L).convert('RGB')
 
