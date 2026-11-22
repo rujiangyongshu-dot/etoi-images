@@ -45,3 +45,4 @@ Perhaps, even after what is taken from us, the story goes on.
 '''
 
 CATEGORY='逆境'
+ROOM_CAM=(0.5,0.40,0.75)

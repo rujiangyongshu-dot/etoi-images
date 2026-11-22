@@ -45,3 +45,4 @@ Perhaps the quiet work done before dawn is what holds everything up.
 '''
 
 CATEGORY='仕事'
+ROOM_CAM=(0.5,0.40,0.75)

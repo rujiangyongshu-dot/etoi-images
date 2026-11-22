@@ -16,6 +16,10 @@ spec=importlib.util.spec_from_file_location('cfg',sys.argv[1]); C=importlib.util
 OUT=sys.argv[2]; os.makedirs(OUT,exist_ok=True)
 CFGDIR=os.path.dirname(os.path.abspath(sys.argv[1]))
 SRC={k:Image.open(os.path.join(CFGDIR,os.path.expanduser(v))).convert('RGB') for k,v in C.IMAGES.items()}
+# 2026-11-22 オーナー決定：1枚目は「作品を飾った部屋と、それを見て心を動かされている人」の画像（rooms/NN/room.jpg）
+ROOM=os.path.join(CFGDIR,'..','..','rooms',os.path.basename(CFGDIR),'room.jpg')
+if os.path.exists(ROOM): SRC['__room']=Image.open(ROOM).convert('RGB')
+ROOM_CAM=getattr(C,'ROOM_CAM',(0.5,0.43,0.75))
 def view(k,c):
     im=SRC[k]; iw,ih=im.size; cx,cy,h=c; vh=h*ih; vw=vh*W/H
     if vw>iw or vh>ih:  # fit inside, blurred backdrop
@@ -93,12 +97,12 @@ def mockup(k):
 for i,s in enumerate(C.SLIDES):
     if s.get('mock'): im=mockup(s['img'])
     else:
-        im=view(s['img'],s['cam'])
+        im=view('__room',ROOM_CAM) if (i==0 and '__room' in SRC) else view(s['img'],s['cam'])
         if i==0 and hasattr(C,'CATEGORY') and s.get('t'): im=hook(im,s['t'],C.CATEGORY,s.get('en'))
         elif s.get('t') and s.get('en'): im=text_bi(im,s['t'],s['en'],s.get('size',40))
         elif s.get('t'): im=text(im,s['t'],s.get('pos'),s.get('size',40))
     im.save(f'{OUT}/{i+1:02d}.jpg',quality=90,optimize=True)
-if hasattr(C,'CAPTION'): open(f'{OUT}/caption.txt','w').write(C.CAPTION.strip()+'\n')
+if hasattr(C,'CAPTION') and not os.path.exists(f'{OUT}/caption.txt'): open(f'{OUT}/caption.txt','w').write(C.CAPTION.strip()+'\n')
 th=[Image.open(f'{OUT}/{i+1:02d}.jpg').resize((270,360)) for i in range(len(C.SLIDES))]
 cols=6; rows=(len(th)+cols-1)//cols; sheet=Image.new('RGB',(270*cols,360*rows))
 for i,t in enumerate(th): sheet.paste(t,((i%cols)*270,(i//cols)*360))

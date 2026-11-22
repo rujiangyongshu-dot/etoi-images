@@ -4,7 +4,8 @@ import sys
 from PIL import Image, ImageDraw, ImageFilter
 import numpy as np
 room, srcp, outp, quad = sys.argv[1:5]
-zones = [tuple(map(int, z.split(','))) for z in sys.argv[5:]]
+ROUND = '--round' in sys.argv  # 円形の絵（トンド）：4点の外接四角に内接する楕円で切り抜く
+zones = [tuple(map(int, z.split(','))) for z in sys.argv[5:] if z != '--round']
 bg = Image.open(room).convert('RGB'); W, H = bg.size
 dst = [tuple(map(float, p.split(','))) for p in quad.split()]
 src = Image.open(srcp).convert('RGB'); sw, sh = src.size
@@ -19,7 +20,9 @@ def coeffs(pa, pb):
         A.append([x, y, 1, 0, 0, 0, -X*x, -X*y]); A.append([0, 0, 0, x, y, 1, -Y*x, -Y*y]); B += [X, Y]
     return np.linalg.solve(np.array(A, float), np.array(B, float))
 warp = src.transform((W, H), Image.PERSPECTIVE, tuple(coeffs(dst, [(0, 0), (sw, 0), (sw, sh), (0, sh)])), Image.BICUBIC)
-m = Image.new('L', (W, H), 0); ImageDraw.Draw(m).polygon(dst, fill=255)
+m = Image.new('L', (W, H), 0)
+if ROUND: ImageDraw.Draw(m).ellipse([min(p[0] for p in dst), min(p[1] for p in dst), max(p[0] for p in dst), max(p[1] for p in dst)], fill=255)
+else: ImageDraw.Draw(m).polygon(dst, fill=255)
 g = np.asarray(bg, float); lum = g.mean(2)
 fg = np.zeros((H, W), bool)
 for (a, b, c, d) in zones:   # 明るい前景（人物の頭など）を残す
@@ -39,7 +42,7 @@ out = out * np.array([1.05, 0.97, 0.82])
 out = Image.fromarray(out.clip(0, 255).astype('uint8')).filter(ImageFilter.GaussianBlur(0.6))
 res = Image.composite(out, bg, m)
 shm = Image.new('L', (W, H), 0); d = ImageDraw.Draw(shm)
-for i in range(14): d.line([(dst[0][0], dst[0][1]+i), (dst[1][0], dst[1][1]+i)], fill=int(110*(1-i/14)))
+for i in range(0 if ROUND else 14): d.line([(dst[0][0], dst[0][1]+i), (dst[1][0], dst[1][1]+i)], fill=int(110*(1-i/14)))
 shm = Image.fromarray((np.asarray(shm, float) * np.asarray(m, float)/255).astype('uint8'))
 res = Image.composite(Image.new('RGB', (W, H)), res, shm)
 res.save(outp, quality=93)
