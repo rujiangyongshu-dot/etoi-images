@@ -11,7 +11,7 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.60
 SLIDES=[
- {'img':'d','cam':(0.47,0.205,0.20),'t':['あのナポレオンも、','徹夜していた。'],'en':'Even Napoleon pulled all-nighters.'},
+ {'img':'d','cam':(0.47,0.205,0.20),'t':['徹夜の','ナポレオン'],'size':175,'en':'Napoleon, after an all-nighter.'},
  {'img':'d','cam':(0.62,0.20,0.30),'t':['この絵には、英雄の','もう一つの顔が描かれている。'],'hook':True,'en':"This painting shows the hero's other face."},
  {'img':'d','cam':(0.32,0.40,0.30),'t':['ろうそくは燃え尽きかけ。','一晩中、机に向かっていた。'],'en':'The candles are nearly spent. He has worked all night.'},
  {'img':'d','cam':(0.80,0.48,0.26),'t':['書類には「CODE」の文字。','民法典を、夜通し書いていた。'],'en':'The papers read “CODE”: his civil code, written through the night.'},

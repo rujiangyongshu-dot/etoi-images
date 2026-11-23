@@ -65,9 +65,10 @@ layers = []
 for i, s in enumerate(shots):
     if i == 0 or s.get('hook'):  # 'hook':True＝1ショット目と同じ見せ方（部屋の画像の次に同じフックを続ける）
         cat = getattr(C, 'CATEGORY', '')
-        L = caption(s['t'], size=getattr(C, 'HSIZE', 68), y=H * getattr(C, 'HOOK_Y', .5), font=bold)
+        L = caption(s['t'], size=s.get('size', getattr(C, 'HSIZE', 68)), y=H * getattr(C, 'HOOK_Y', .5), font=bold)
         if cat:
-            dd = ImageDraw.Draw(L); dd.text((W / 2, H * getattr(C, 'HOOK_Y', .5) + 190), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
+            _hs = s.get('size', getattr(C, 'HSIZE', 68)); _hb = H * getattr(C, 'HOOK_Y', .5) + (len(s['t']) * int(_hs * 1.55) - (int(_hs * 1.55) - _hs)) / 2
+            dd = ImageDraw.Draw(L); dd.text((W / 2, max(H * getattr(C, 'HOOK_Y', .5) + 190, _hb + 45)), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
     else:
         L = caption(s['t'], size=s.get('size', getattr(C, 'TSIZE', 54)), y=(H * .5) if s.get('mid') else ((H * .66) if s.get('en') else (H * .5)))
     en = s.get('en')
@@ -78,7 +79,8 @@ for i, s in enumerate(shots):
             t = (rows[-1] + ' ' + w).strip()
             if dd.textlength(t, font=fe) <= 900: rows[-1] = t
             else: rows.append(w)
-        ey = (H * getattr(C, 'HOOK_Y', .5) + 260) if (i == 0 or s.get('hook')) else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
+        _hs = s.get('size', getattr(C, 'HSIZE', 68)); _hb = H * getattr(C, 'HOOK_Y', .5) + (len(s['t']) * int(_hs * 1.55) - (int(_hs * 1.55) - _hs)) / 2
+        ey = max(H * getattr(C, 'HOOK_Y', .5) + 260, _hb + 115) if (i == 0 or s.get('hook')) else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
         for k, r in enumerate(rows[:2]):
             dd.text((W / 2, ey + k * 42), r, font=fe, fill=(232, 226, 214, 225), anchor='ma', stroke_width=2, stroke_fill=(0, 0, 0, 120))
     layers.append(L)

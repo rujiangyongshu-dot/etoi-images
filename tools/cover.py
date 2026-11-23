@@ -9,17 +9,17 @@ def _f(n):
     raise SystemExit('font not found: ' + n)
 src, out, *txt = sys.argv[1:]
 en = txt[2] if len(txt) > 2 else None
-lines = txt[:2]
+lines = [x for x in txt[:2] if x]
 im = Image.open(src).convert('RGB'); s = max(W / im.width, H / im.height)
 im = im.resize((int(im.width * s), int(im.height * s)), Image.LANCZOS)
 im = im.crop(((im.width - W) // 2, (im.height - H) // 2, (im.width - W) // 2 + W, (im.height - H) // 2 + H)).convert('RGBA')
 g = Image.new('L', (1, H))
 for y in range(H): g.putpixel((0, y), int(200 * max(0, (y - H * .45) / (H * .55)) ** 1.2))
 im = Image.alpha_composite(im, Image.merge('RGBA', [Image.new('L', (W, H), 0)] * 3 + [g.resize((W, H))]))
-d = ImageDraw.Draw(im); size = 76
+d = ImageDraw.Draw(im); size = 150 if len(lines) == 1 else (165 if max(len(x) for x in lines) <= 6 else 76)  # 1行なら大きく（11/23 オーナー：ドンと見せる）
 bf = lambda z: ImageFont.truetype(_f('NotoSansCJK-Bold.ttc'), z, index=0)
 f = bf(size)
-while max(f.getlength(x) for x in lines) > 960: size -= 2; f = bf(size)
+while max(f.getlength(x) for x in lines) > 980: size -= 2; f = bf(size)
 y0 = int(H * .64); lh = int(size * 1.35)
 for i, ln in enumerate(lines):
     d.text((W / 2, y0 + i * lh), ln, font=f, fill='white', anchor='ma', stroke_width=3, stroke_fill=(0, 0, 0))
