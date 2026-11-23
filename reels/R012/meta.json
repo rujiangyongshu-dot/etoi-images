@@ -2,10 +2,16 @@
  "format": "F23",
  "format_name": "一枚の中の一点（v3見本）",
  "work": "59",
- "hook": "朝4時13分。皇帝は、まだ寝ていない。",
- "caption": "朝4時13分。皇帝は、まだ寝ていない。\n\nダヴィッド《書斎のナポレオン》（1812）。燃え尽きかけのろうそく、「CODE」と書かれた民法典の書類、椅子の剣。そして、たるんだ靴下と乱れた髪。描かれているのは完璧な英雄ではなく、夜通し働き続ける一人の人間でした。完成の3か月後、ナポレオンはロシアに侵攻し、大軍の多くを失います。\n\n今夜も働いている誰かに、送ってあげてください。\n💬 誰も見ていない時間に、あなたが積み上げていることは？\n\n🌐 English\n4:13 a.m. The emperor still hasn't slept. In David's “Napoleon in His Study” (1812), the candles are nearly spent, the papers read “CODE”, and his stockings sag: not a flawless hero, but a man at work through the night.\n\n#仕事の悩み #働き方 #名画 #ナポレオン #自己啓発",
- "audio_ids": ["1214305965663814", "2477944699150252"],
- "audio_titles": ["Debussy Clair de Lune / Hugh Sung", "Peaceful Piano / Dr. Pheel"],
+ "hook": "あのナポレオンも、徹夜していた。",
+ "caption": "あのナポレオンも、徹夜していた。\n\nダヴィッド《書斎のナポレオン》（1812）。絵の中の時計は朝4時13分。燃え尽きかけのろうそく、「CODE」と書かれた民法典の書類、椅子の剣。そして、たるんだ靴下と乱れた髪。描かれているのは完璧な英雄ではなく、夜通し働き続ける一人の人間でした。完成の3か月後、ナポレオンはロシアに侵攻し、大軍の多くを失います。\n\n今夜も働いている誰かに、送ってあげてください。\n💬 誰も見ていない時間に、あなたが積み上げていることは？\n\n🌐 English\nEven Napoleon pulled all-nighters. In David's “Napoleon in His Study” (1812), the candles are nearly spent, the papers read “CODE”, and his stockings sag: not a flawless hero, but a man at work through the night.\n\n#仕事の悩み #働き方 #名画 #ナポレオン #自己啓発",
+ "audio_ids": [
+  "1214305965663814",
+  "2477944699150252"
+ ],
+ "audio_titles": [
+  "Debussy Clair de Lune / Hugh Sung",
+  "Peaceful Piano / Dr. Pheel"
+ ],
  "hypothesis": "v3：0-1秒に顔の寄り＋時刻の数字、1-3秒に「もう一つの顔」の約束、5〜7秒ごとの証拠、20秒の逆転（靴下・髪）、最後に視聴者へ返すループ構成で、平均視聴10秒以上・3秒後の離脱が v2 より下がるか",
  "cover": "cover.jpg"
 }
