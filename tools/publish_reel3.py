@@ -42,7 +42,7 @@ try:
     nshot = len([x for x in ns.get('SLIDES', []) if not x.get('mock')])
     total = sum(ns['DUR']) if ns.get('DUR') else (3.4 + 3.6 * max(0, nshot - 2) + 4.2)
     total += ns.get('END', 3.0)
-    if total > 16.5: prob.append(f'長さ約{total:.0f}秒（v2では16秒以内）')
+    if total > 60: prob.append(f'長さ約{total:.0f}秒（60秒以内）')  # v3（11/23）：16秒上限は効果がなかったので撤廃
 except Exception as e:
     prob.append('cfg.py を読めない: ' + str(e)[:60])
 if prob: raise SystemExit(json.dumps({'error': 'rule_gate', 'rid': RID, 'problems': prob}, ensure_ascii=False))
