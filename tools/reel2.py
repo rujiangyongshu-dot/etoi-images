@@ -67,7 +67,7 @@ for i, s in enumerate(shots):
         cat = getattr(C, 'CATEGORY', '')
         L = caption(s['t'], size=getattr(C, 'HSIZE', 68), y=H * getattr(C, 'HOOK_Y', .5), font=bold)
         if cat:
-            dd = ImageDraw.Draw(L); dd.text((W / 2, H * .5 + 190), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
+            dd = ImageDraw.Draw(L); dd.text((W / 2, H * getattr(C, 'HOOK_Y', .5) + 190), 'ETOI ｜ ' + cat, font=serif(32), fill=(236, 231, 220, 230), anchor='ma')
     else:
         L = caption(s['t'], size=s.get('size', getattr(C, 'TSIZE', 54)), y=(H * .5) if s.get('mid') else ((H * .66) if s.get('en') else (H * .5)))
     en = s.get('en')
@@ -78,7 +78,7 @@ for i, s in enumerate(shots):
             t = (rows[-1] + ' ' + w).strip()
             if dd.textlength(t, font=fe) <= 900: rows[-1] = t
             else: rows.append(w)
-        ey = (H * .5 + 260) if (i == 0 or s.get('hook')) else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
+        ey = (H * getattr(C, 'HOOK_Y', .5) + 260) if (i == 0 or s.get('hook')) else ((H * .5 + 135) if s.get('mid') else (H * .66 + 135))
         for k, r in enumerate(rows[:2]):
             dd.text((W / 2, ey + k * 42), r, font=fe, fill=(232, 226, 214, 225), anchor='ma', stroke_width=2, stroke_fill=(0, 0, 0, 120))
     layers.append(L)
