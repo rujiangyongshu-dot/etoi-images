@@ -9,8 +9,8 @@ ZOOM=1.32
 HSIZE=78
 TSIZE=64
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['2年。'],'size':110,'mid':True,'en':'Two years.'},
- {'img':'d','cam':(0.50,0.34,0.22),'hook':True,'t':['2年。'],'size':110,'mid':True,'en':'Two years.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['1枚の絵に、', '2年と60枚の下描き。'],'en':'One painting: two years and sixty studies.'},
+ {'img':'d','cam':(0.50,0.34,0.22),'hook':True,'t':['1枚の絵に、', '2年と60枚の下描き。'],'en':'One painting: two years and sixty studies.'},
  {'img':'d','cam':(0.21,0.80,0.38),'t':['約60点。'],'size':110,'mid':True,'en':'About sixty studies.'},
  {'img':'d','cam':(0.48,0.32,0.40),'t':['31歳。'],'size':110,'mid':True,'en':'Thirty-one.'},
  {'img':'d','cam':(0.80,0.55,0.45),'t':['24歳から2年、習作は約60点。','31歳で急死するまで手元にあった。'],'en':'From 24, two years and some 60 studies. It stayed with him until his death at 31.'},

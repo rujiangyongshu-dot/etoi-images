@@ -9,8 +9,8 @@ ZOOM=1.32
 HSIZE=78
 TSIZE=64
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['目先の利益を、','追いかけていませんか。'],'en':'Are you chasing short-term gains?'},
- {'img':'d','cam':(0.47,0.49,0.25),'hook':True,'t':['目先の利益を、','追いかけていませんか。'],'en':'Are you chasing short-term gains?'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['名画を40年、', '売らなかった画商がいる。'],'en':'One dealer refused to sell a masterpiece for 40 years.'},
+ {'img':'d','cam':(0.47,0.49,0.25),'hook':True,'t':['名画を40年、', '売らなかった画商がいる。'],'en':'One dealer refused to sell a masterpiece for 40 years.'},
  {'img':'d','cam':(0.62,0.85,0.25),'t':['1881年、ある画商が','この絵を買った。'],'en':'In 1881, an art dealer bought this painting.'},
  {'img':'d','cam':(0.45,0.42,0.36),'t':['翌年、彼の貸し出しで','印象派展に並んだ。'],'en':'The next year, he lent it to the Impressionist exhibition.'},
  {'img':'d','cam':(0.47,0.52,0.48),'t':['そして40年以上、','手放さなかった。'],'en':'And he kept it for more than 40 years.'},
