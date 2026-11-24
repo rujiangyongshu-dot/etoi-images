@@ -52,8 +52,13 @@ def endcard(k):
     d = ImageDraw.Draw(im); d.rectangle([x, y, x + fw, y + fh], fill=(150, 122, 70)); d.rectangle([x + 12, y + 12, x + fw - 12, y + fh - 12], fill=(240, 236, 226)); im.paste(art, (x + 24, y + 24))
     d.text((W / 2, 250), 'ETOI｜名画の読み方', font=serif(44), fill=(236, 231, 220), anchor='ma')
     end1 = getattr(C, 'ENDCARD', '全10枚の解説は、プロフィールの投稿で')
-    d.text((W / 2, y + fh + 90), end1, font=serif(40), fill=(236, 231, 220), anchor='ma')
-    d.text((W / 2, y + fh + 160), getattr(C, 'ENDCARD2', '答えのない世界で、自分の答えを描く。'), font=serif(getattr(C, 'ENDCARD2_SIZE', 30)), fill=(236, 220, 170) if hasattr(C, 'ENDCARD2') else (180, 172, 160), anchor='ma')
+    fe1 = serif(40); rows = [end1]  # 長い一言は画面幅（940px）に収まるよう句読点で折り返す（11/24 はみ出し修正）
+    while max(fe1.getlength(r) for r in rows) > 940 and len(rows) < 3:
+        r = rows.pop(); cut = [i + 1 for i, ch in enumerate(r) if ch in '。、' and 0 < i + 1 < len(r)]
+        k = min(cut, key=lambda i: abs(i - len(r) / 2)) if cut else len(r) // 2
+        rows += [r[:k], r[k:]]
+    for k, r in enumerate(rows): d.text((W / 2, y + fh + 80 + k * 56), r, font=fe1, fill=(236, 231, 220), anchor='ma')
+    d.text((W / 2, y + fh + 150 + (len(rows) - 1) * 56), getattr(C, 'ENDCARD2', '答えのない世界で、自分の答えを描く。'), font=serif(getattr(C, 'ENDCARD2_SIZE', 30)), fill=(236, 220, 170) if hasattr(C, 'ENDCARD2') else (180, 172, 160), anchor='ma')
     return im
 
 shots = [s for s in C.SLIDES if not s.get('mock')]
