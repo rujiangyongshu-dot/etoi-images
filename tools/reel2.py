@@ -120,7 +120,8 @@ if any(x.get('vo') for x in shots):  # ナレーション（v4・2026-11-24）�
                 if w_.getnchannels() == 2: a_ = a_.reshape(-1, 2).mean(1)
             else:
                 import pyopenjtalk; a_, sr_ = pyopenjtalk.tts(x['vo'], speed=SPEED); a_ = a_.astype(np.float32)
-            DUR[k2] = max(DUR[k2], len(a_) / sr_ + 0.55); clips.append((k2, a_, sr_))
+            if not x.get('vo_free'): DUR[k2] = max(DUR[k2], len(a_) / sr_ + 0.55)  # 'vo_free'：尺を延ばさず次のショットにまたがって読む（部屋の画像は約1秒のまま）
+            clips.append((k2, a_, sr_))
     st_ = np.cumsum([0] + DUR); tot_ = sum(DUR) + END; sr_ = clips[0][2]
     buf = np.zeros(int(tot_ * sr_) + sr_, np.float32)
     for k2, a_, _ in clips:

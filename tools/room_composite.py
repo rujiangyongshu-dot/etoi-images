@@ -14,6 +14,8 @@ tgt = tw / th
 if sw / sh > tgt: cw = int(sh * tgt); x0 = (sw - cw) // 2; src = src.crop((x0, 0, x0 + cw, sh))
 else: ch = int(sw / tgt); y0 = (sh - ch) // 2; src = src.crop((0, y0, sw, y0 + ch))
 sw, sh = src.size
+_t = int(tw * 1.5)  # 先に縮めてから貼る（ひび割れのちらつき防止）
+if sw > _t: src = src.resize((_t, int(sh * _t / sw)), Image.LANCZOS); sw, sh = src.size
 def coeffs(pa, pb):
     A = []; B = []
     for (x, y), (X, Y) in zip(pa, pb):

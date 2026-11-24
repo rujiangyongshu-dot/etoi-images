@@ -1,0 +1,11 @@
+# R018 モナ・リザ×1911年の盗難（事実と出典。各2つ以上）
+- 1911年8月21日（月曜・休館日）に盗まれた：Smithsonian Magazine「Stolen: How the Mona Lisa Became the World's Most Famous Painting」／National Geographic「The Louvre has a wild history of being robbed」(2025)
+- 残ったのは壁の金具（4本の鉄の金具）：Smithsonian／National Geographic
+- 詩人アポリネールが逮捕、ピカソも疑われた：History.com「The Heist that Made the Mona Lisa Famous」／National Geographic／NZ Herald
+- 1週間後に再開し、何千人もが空の壁を見に来た（カフカも）：Smithsonian／RNZ (2025)／CrimeReads
+- 犯人ペルッジャは元ルーヴルの作業員で、この絵の保護ケースを作った：History.com／Al Jazeera (2023)／National Geographic
+- パリの自宅に隠していた：History.com（偽の底のトランク）／My Modern Met（2年間アパートに）
+- 28か月後に逮捕、イタリアの画商に売ろうとして発覚：Smithsonian／Greek Reporter (2026)
+- 戻ったときには世界一有名な絵になっていた：Spokesman-Review (2019, Washington Post)／NPR (2011, James Zug)
+- 画像：Wikimedia Commons「Mona Lisa, by Leonardo da Vinci, from C2RMF retouched.jpg」（パブリックドメイン）
+- ナレーション：VOICEVOX:青山龍星
