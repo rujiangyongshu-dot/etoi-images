@@ -16,7 +16,7 @@ im = im.crop(((im.width - W) // 2, (im.height - H) // 2, (im.width - W) // 2 + W
 g = Image.new('L', (1, H))
 for y in range(H): g.putpixel((0, y), int(200 * max(0, (y - H * .45) / (H * .55)) ** 1.2))
 im = Image.alpha_composite(im, Image.merge('RGBA', [Image.new('L', (W, H), 0)] * 3 + [g.resize((W, H))]))
-d = ImageDraw.Draw(im); size = 150 if len(lines) == 1 else (165 if max(len(x) for x in lines) <= 6 else 76)  # 1行なら大きく（11/23 オーナー：ドンと見せる）
+d = ImageDraw.Draw(im); size = 150 if len(lines) == 1 else (165 if max(len(x) for x in lines) <= 7 else 76)  # 1行なら大きく（11/23 オーナー：ドンと見せる）
 bf = lambda z: ImageFont.truetype(_f('NotoSansCJK-Bold.ttc'), z, index=0)
 f = bf(size)
 while max(f.getlength(x) for x in lines) > 980: size -= 2; f = bf(size)
