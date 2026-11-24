@@ -49,7 +49,7 @@ if prob: raise SystemExit(json.dumps({'error': 'rule_gate', 'rid': RID, 'problem
 c = used = None; errs = []
 for aid in meta['audio_ids']:
     d = {'media_type': 'REELS', 'video_url': RAW + f'reels/{RID}.mp4', 'caption': caption, 'share_to_feed': 'false',
-         'audio_configuration': json.dumps({'audio_id': str(aid), 'audio_volume': 22 if meta.get('narration') else 100, 'video_volume': 100 if meta.get('narration') else 0})}
+         'audio_configuration': json.dumps({'audio_id': str(aid), 'audio_volume': 70 if meta.get('narration') else 100, 'video_volume': 100 if meta.get('narration') else 0})}
     if meta.get('cover'): d['cover_url'] = RAW + f'reels/{RID}/' + meta['cover']
     r = call(IG + '/media', d)
     if 'id' not in r: errs.append({aid: r.get('error')}); continue
