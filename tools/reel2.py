@@ -110,11 +110,16 @@ def shot_frame(i, t):  # t: 0..1 within shot
 
 VO = None
 if any(x.get('vo') for x in shots):  # ナレーション（v4・2026-11-24）：各ショットの 'vo' を読み上げ、その長さに合わせて尺を延ばす
-    import pyopenjtalk, wave
+    import wave
     SPEED = getattr(C, 'VO_SPEED', 1.05); clips = []
+    VD = os.path.join(CFGDIR, 'vo') if os.path.isdir(os.path.join(CFGDIR, 'vo')) else None  # VOICEVOX 青山龍星の音声（vo/00.wav…）があれば優先
     for k2, x in enumerate(shots):
         if x.get('vo'):
-            a_, sr_ = pyopenjtalk.tts(x['vo'], speed=SPEED); a_ = a_.astype(np.float32)
+            if VD and os.path.exists(os.path.join(VD, '%02d.wav' % k2)):
+                w_ = wave.open(os.path.join(VD, '%02d.wav' % k2)); sr_ = w_.getframerate(); a_ = np.frombuffer(w_.readframes(w_.getnframes()), np.int16).astype(np.float32)
+                if w_.getnchannels() == 2: a_ = a_.reshape(-1, 2).mean(1)
+            else:
+                import pyopenjtalk; a_, sr_ = pyopenjtalk.tts(x['vo'], speed=SPEED); a_ = a_.astype(np.float32)
             DUR[k2] = max(DUR[k2], len(a_) / sr_ + 0.55); clips.append((k2, a_, sr_))
     st_ = np.cumsum([0] + DUR); tot_ = sum(DUR) + END; sr_ = clips[0][2]
     buf = np.zeros(int(tot_ * sr_) + sr_, np.float32)
