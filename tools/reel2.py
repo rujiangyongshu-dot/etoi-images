@@ -85,6 +85,12 @@ for i, s in enumerate(shots):
             dd.text((W / 2, ey + k * 42), r, font=fe, fill=(232, 226, 214, 225), anchor='ma', stroke_width=2, stroke_fill=(0, 0, 0, 120))
     layers.append(L)
 
+def ring_xy(k, cx, cy, h, rx, ry):  # 画像上の点 (rx,ry) が画面のどこに来るか（view と同じ計算）
+    im = SRC[k]; iw, ih = im.size; vh = h * ih; vw = vh * W / H
+    if vw > iw: vw = iw; vh = vw * H / W
+    px = min(max(cx * iw, vw / 2), iw - vw / 2); py = min(max(cy * ih, vh / 2), ih - vh / 2)
+    return ((rx * iw - (px - vw / 2)) / vw * W, (ry * ih - (py - vh / 2)) / vh * H)
+
 def shot_frame(i, t):  # t: 0..1 within shot
     s = shots[i]; cx, cy, h = s['cam']
     # ゆっくり寄る（1.18倍→1.0倍）、少し横に流す
@@ -92,11 +98,33 @@ def shot_frame(i, t):  # t: 0..1 within shot
     fr = Image.new('RGB', (W, H), (14, 13, 12)) if s.get('img') is None else view(s['img'], cx + dx, cy, min(h * z, 1.0))
     a = 1.0 if (i == 0 or s.get('hook')) else min(1, t * DUR[i] / 0.3)  # 1枚目は最初のコマから文字を出す
     L = layers[i] if a >= 1 else Image.fromarray((np.asarray(layers[i]) * np.array([1, 1, 1, a])).astype(np.uint8))
-    return Image.alpha_composite(fr.convert('RGBA'), L).convert('RGB')
+    fr = fr.convert('RGBA')
+    if s.get('ring') and s.get('img'):  # 'ring':(x,y,半径px) 絵の中の一点を金の円で示す（v4）
+        rx, ry, rr = s['ring']; X, Y = ring_xy(s['img'], cx + dx, cy, min(h * z, 1.0), rx, ry)
+        ra = max(0.0, min(1.0, (t * DUR[i] - 0.35) / 0.35))
+        if ra > 0:
+            R = Image.new('RGBA', (W, H), (0, 0, 0, 0)); rd = ImageDraw.Draw(R)
+            rd.ellipse([X - rr, Y - rr, X + rr, Y + rr], outline=(232, 196, 110, int(235 * ra)), width=7)
+            fr = Image.alpha_composite(fr, R)
+    return Image.alpha_composite(fr, L).convert('RGB')
 
+VO = None
+if any(x.get('vo') for x in shots):  # ナレーション（v4・2026-11-24）：各ショットの 'vo' を読み上げ、その長さに合わせて尺を延ばす
+    import pyopenjtalk, wave
+    SPEED = getattr(C, 'VO_SPEED', 1.05); clips = []
+    for k2, x in enumerate(shots):
+        if x.get('vo'):
+            a_, sr_ = pyopenjtalk.tts(x['vo'], speed=SPEED); a_ = a_.astype(np.float32)
+            DUR[k2] = max(DUR[k2], len(a_) / sr_ + 0.55); clips.append((k2, a_, sr_))
+    st_ = np.cumsum([0] + DUR); tot_ = sum(DUR) + END; sr_ = clips[0][2]
+    buf = np.zeros(int(tot_ * sr_) + sr_, np.float32)
+    for k2, a_, _ in clips:
+        o = int((st_[k2] + 0.2) * sr_); buf[o:o + len(a_)] += a_
+    buf = np.clip(buf / (np.abs(buf).max() + 1) * 26000, -32768, 32767).astype(np.int16)
+    VO = OUT + '.vo.wav'; w_ = wave.open(VO, 'wb'); w_.setnchannels(1); w_.setsampwidth(2); w_.setframerate(sr_); w_.writeframes(buf.tobytes()); w_.close()
 total = sum(DUR) + END
 ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
-                       '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo', '-shortest', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
+                       *(['-i', VO] if VO else ['-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo']), '-shortest', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart', OUT], stdin=subprocess.PIPE)
 starts = np.cumsum([0] + DUR)
 ec = endcard(mock['img'])

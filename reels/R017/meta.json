@@ -1,0 +1,13 @@
+{
+ "format": "V4",
+ "format_name": "1枚の謎が解ける物語（v4見本・ナレーション）",
+ "work": "06",
+ "narration": true,
+ "hook": "炎上した肖像画",
+ "hook_candidates": ["炎上した肖像画", "笑われたサージェント", "肩紐ひとつで、人生が変わった画家", "「不快な肖像」と書かれた名画"],
+ "caption": "炎上した肖像画。\n\nジョン・シンガー・サージェント《マダムX》（1883–84／メトロポリタン美術館）。1884年のパリのサロンで、肩から滑り落ちた宝石の肩紐が嘲笑を呼び、批評誌には「単に不快な肖像」と書かれました。不評をきっかけに彼はイギリスで客を探し、大きな成功を収めます。肩紐を描き直したこの絵を30年以上手元に置き、1916年に美術館へ売るとき「たぶん、私の最高傑作だ」と述べました。\n\n笑われたことがある誰かに、送ってあげてください。\n💬 笑われたけれど、自分では誇れる仕事はありますか？\n\n🌐 English\nA portrait that caused a scandal. At the 1884 Paris Salon, Sargent's “Madame X” was mocked for a jeweled strap slipping off her shoulder. He repainted it, kept the picture for over 30 years, and in 1916 called it perhaps the best thing he had done.\n\n#仕事の悩み #名画 #名画解説 #サージェント #マダムX",
+ "audio_ids": ["412971409445783", "2477944699150252"],
+ "audio_titles": ["（R002と同じ曲）", "Peaceful Piano / Dr. Pheel"],
+ "hypothesis": "v4：60秒前後・ナレーション・1枚の謎（肩紐）を細部に寄って円で示しながら解く物語にすると、平均視聴が15秒以上になり、保存・送信が出るか",
+ "cover": "cover.jpg"
+}
