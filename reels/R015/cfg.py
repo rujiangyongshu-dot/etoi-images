@@ -1,9 +1,9 @@
 # v3 自動制作（11/24）型 F13 常識の逆張り（posts/08 ロイツェ《デラウェア川を渡るワシントン》）昼
 # 構成：0-1秒 ワシントンの寄り＋「間違いだらけのワシントン」／1-3秒「それでも描かれた理由は最後に」と約束／史実→所蔵館が挙げる間違い（向き・氷・舟・夜明け・75年後のドイツ）→理由で回収／完璧主義の人へ返し、冒頭の「間違いだらけ」へループ
-IMAGES={'d':'../../posts/08/src/master.jpg'}
+IMAGES={'room':'../../rooms/08/room.jpg','d':'../../posts/08/src/master.jpg'}
 CATEGORY='完璧主義'
 ENDCARD='完璧主義でしんどい同僚に、送ってあげてください。'
-DUR=[2.6,2.8,3.0,3.0,2.8,3.2,2.8,3.0,3.4,3.6]
+DUR=[1.0,1.5,2.8,3.0,3.0,2.8,3.2,2.8,3.0,3.4,3.6]
 END=1.8
 XF=0.25
 ZOOM=1.32
@@ -11,7 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'d','cam':(0.425,0.42,0.42),'t':['間違いだらけの','ワシントン'],'size':150,'en':'Washington, painted all wrong.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['間違いだらけの','ワシントン'],'size':150,'en':'Washington, painted all wrong.'},
+ {'hook':True,'img':'d','cam':(0.425,0.42,0.42),'t':['間違いだらけの','ワシントン'],'size':150,'en':'Washington, painted all wrong.'},
  {'img':'d','cam':(0.45,0.45,0.60),'t':['史実と違うところだらけ。','それでも描かれた理由が、最後に。'],'hook':True,'en':'It is full of historical errors. Why it was painted this way comes at the end.'},
  {'img':'d','cam':(0.50,0.50,1.00),'t':['1776年12月、雪の夜。','減った兵で、凍る川を渡った。'],'en':'December 1776, a snowy night: with a shrinking army, he crossed an icy river.'},
  {'img':'d','cam':(0.80,0.48,0.60),'t':['対岸の英軍への奇襲は成功。','独立の戦いは、息を吹き返した。'],'en':'The surprise attack on the other side succeeded, and the fight for independence revived.'},

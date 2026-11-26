@@ -1,9 +1,9 @@
 # v3 自動制作（11/24）型 F07 悩みラベル（posts/56 ラファエロ《アルバの聖母》）夜
 # 構成：0-1秒 聖母の顔の寄り＋「ソ連が売ったラファエロ」／1-3秒「売られた先で思いもよらない役目」と約束／作品→公爵家→皇帝→約95年→ソ連のひそかな売却→メロン→21点が国立美術館の核で回収／手放した人へ返し、聖母の顔へループ
-IMAGES={'d':'../../posts/56/src.jpg'}
+IMAGES={'room':'../../rooms/56/room.jpg','d':'../../posts/56/src.jpg'}
 CATEGORY='手放す'
 ENDCARD='仕事や夢を手放した友人に、送ってあげてください。'
-DUR=[2.6,2.8,3.0,3.0,3.0,3.0,3.2,2.8,3.4,3.6]
+DUR=[1.0,1.5,2.8,3.0,3.0,3.0,3.0,3.2,2.8,3.4,3.6]
 END=1.8
 XF=0.25
 ZOOM=1.32
@@ -11,7 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'d','cam':(0.47,0.335,0.22),'t':['ソ連が売った','ラファエロ'],'size':170,'en':'The Raphael the Soviets sold.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['ソ連が売った','ラファエロ'],'size':170,'en':'The Raphael the Soviets sold.'},
+ {'hook':True,'img':'d','cam':(0.47,0.335,0.22),'t':['ソ連が売った','ラファエロ'],'size':170,'en':'The Raphael the Soviets sold.'},
  {'img':'d','cam':(0.30,0.42,0.30),'t':['売られた先で、この一枚は','思いもよらない役目を負う。'],'hook':True,'en':'Where it was sold, this one painting took on an unexpected role.'},
  {'img':'d','cam':(0.50,0.50,1.00),'t':['ラファエロ27歳ごろの作。','直径約95cmの、丸い絵だ。'],'en':'Painted by Raphael around age 27: a round picture about 95 cm across.'},
  {'img':'d','cam':(0.24,0.49,0.38),'t':['幼いヨハネが差し出す十字架を、','幼子イエスがつかんでいる。'],'en':'The infant Jesus grasps the cross that the young John holds out.'},
