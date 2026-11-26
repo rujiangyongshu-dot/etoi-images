@@ -1,9 +1,9 @@
 # v3 自動制作（11/25）型 F10 遅咲き・年齢（posts/58 ルソー《赤道のジャングル》）約32秒
 # 構成：0-1秒 獣の目の寄り＋「49歳の脱サラ画家」／1-3秒「のちに付いた値段」を約束／税関職員・笑われた・ジャングルを見ていない・22年→49歳・貧しさ・ピカソの宴／約70億円で回収／「49歳からでも」で1ショット目へループ
-IMAGES={'d':'../../posts/58/src.jpg'}
+IMAGES={'room':'../../rooms/58/room.jpg','d':'../../posts/58/src.jpg'}
 CATEGORY='挑戦'
 ENDCARD='年齢を理由に迷っている誰かに、送ってあげてください。'
-DUR=[2.6,3.0,3.2,3.0,3.2,3.0,3.2,3.2,3.2,3.6]
+DUR=[1.0,1.5,3.0,3.2,3.0,3.2,3.0,3.2,3.2,3.2,3.6]
 END=1.8
 XF=0.25
 ZOOM=1.32
@@ -11,7 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'d','cam':(0.41,0.80,0.25),'t':['49歳の','脱サラ画家'],'size':170,'en':'He quit his day job at 49 to paint.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['49歳の','脱サラ画家'],'size':170,'en':'He quit his day job at 49 to paint.'},
+ {'hook':True,'img':'d','cam':(0.41,0.80,0.25),'t':['49歳の','脱サラ画家'],'size':170,'en':'He quit his day job at 49 to paint.'},
  {'img':'d','cam':(0.42,0.80,0.42),'t':['笑い者だった彼の絵に、','のちに付いた値段がある。'],'hook':True,'en':'Once a laughingstock, his art later fetched a stunning price.'},
  {'img':'d','cam':(0.77,0.52,0.42),'t':['本業は、パリ市の税関職員。','独学の絵は、笑われ続けた。'],'en':'By day a Paris toll clerk; his self-taught art was mocked for years.'},
  {'img':'d','cam':(0.55,0.30,0.55),'t':['このジャングルを、彼は','一度も見ていない。'],'en':'He never once saw a jungle like this.'},

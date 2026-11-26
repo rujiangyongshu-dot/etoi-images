@@ -1,9 +1,9 @@
 # v3 型 F09 前と後の比較（posts/44 ドーミエ《三等客車》）約33秒
 # 構成：0-1秒 老婆の顔の寄り＋「王を笑って、牢屋へ」／1-3秒「56歳で描いた絵に、死後ついた値段がある」と約束／24歳の投獄→56歳の三等客車→描きかけ→無視→1.9億円／最後に約束を回収し悩みへ返す
-IMAGES={'d':'../../posts/44/src.jpg'}
+IMAGES={'room':'../../rooms/44/room.jpg','d':'../../posts/44/src.jpg'}
 CATEGORY='評価されない'
 ENDCARD='評価されずに働いている誰かに、送ってあげてください。'
-DUR=[2.6,3.0,3.2,3.0,3.2,3.0,3.2,3.2,3.2,3.6]
+DUR=[1.0,1.5,3.0,3.2,3.0,3.2,3.0,3.2,3.2,3.2,3.6]
 END=1.8
 XF=0.25
 ZOOM=1.32
@@ -11,7 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'d','cam':(0.45,0.47,0.30),'t':['王を笑って、','牢屋へ。'],'size':165,'en':'He mocked the king, and went to prison.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['王を笑って、','牢屋へ。'],'size':165,'en':'He mocked the king, and went to prison.'},
+ {'hook':True,'img':'d','cam':(0.45,0.47,0.30),'t':['王を笑って、','牢屋へ。'],'size':165,'en':'He mocked the king, and went to prison.'},
  {'img':'d','cam':(0.30,0.52,0.36),'t':['この男が56歳で描いた絵に、','死後、ついた値段がある。'],'hook':True,'en':'A painting he made at 56 fetched a price after his death.'},
  {'img':'d','cam':(0.60,0.36,0.34),'t':['1831年、王を大食いの巨人に。','この風刺画で、24歳で投獄。'],'en':'In 1831 he drew the king as a greedy giant, and was jailed at 24.'},
  {'img':'d','cam':(0.50,0.50,0.95),'t':['1864年、56歳。','描いたのは、三等客車の人々。'],'en':'In 1864, at 56, he painted the people in a third-class carriage.'},
