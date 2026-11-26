@@ -11,8 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['落選した','スーラ'],'size':170,'en':'Seurat, rejected.'},
- {'hook':True,'img':'d','cam':(0.80,0.27,0.26),'t':['落選した','スーラ'],'size':170,'en':'Seurat, rejected.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['急死した','天才スーラ'],'size':170,'en':'Seurat, the genius who died at 31.'},
+ {'hook':True,'img':'d','cam':(0.80,0.27,0.26),'t':['急死した','天才スーラ'],'size':170,'en':'Seurat, the genius who died at 31.'},
  {'img':'d','cam':(0.49,0.38,0.42),'t':['落選から2年。','彼は、もう一度あの舞台に挑んだ。'],'hook':True,'en':'Two years after the rejection, he tried again.'},
  {'img':'d','cam':(0.20,0.45,0.55),'t':['1884年、24歳。','自信作が、公式の展覧会で落選した。'],'en':'In 1884, at 24, his ambitious painting was rejected by the official Salon.'},
  {'img':'d','cam':(0.24,0.62,0.45),'t':['彼はまず、落ちた絵を','別の展覧会で発表した。'],'en':'First, he showed the rejected work at another exhibition.'},

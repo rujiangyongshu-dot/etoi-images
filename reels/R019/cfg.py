@@ -11,8 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['49歳の','脱サラ画家'],'size':170,'en':'He quit his day job at 49 to paint.'},
- {'hook':True,'img':'d','cam':(0.41,0.80,0.25),'t':['49歳の','脱サラ画家'],'size':170,'en':'He quit his day job at 49 to paint.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['70億円の','素人画家'],'size':170,'en':'The self-taught painter worth $43 million.'},
+ {'hook':True,'img':'d','cam':(0.41,0.80,0.25),'t':['70億円の','素人画家'],'size':170,'en':'The self-taught painter worth $43 million.'},
  {'img':'d','cam':(0.42,0.80,0.42),'t':['笑い者だった彼の絵に、','のちに付いた値段がある。'],'hook':True,'en':'Once a laughingstock, his art later fetched a stunning price.'},
  {'img':'d','cam':(0.77,0.52,0.42),'t':['本業は、パリ市の税関職員。','独学の絵は、笑われ続けた。'],'en':'By day a Paris toll clerk; his self-taught art was mocked for years.'},
  {'img':'d','cam':(0.55,0.30,0.55),'t':['このジャングルを、彼は','一度も見ていない。'],'en':'He never once saw a jungle like this.'},
