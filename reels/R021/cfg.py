@@ -11,8 +11,8 @@ HSIZE=78
 TSIZE=62
 HOOK_Y=0.62
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['借金の','フェルメール'],'size':170,'en':'Vermeer, in debt.'},
- {'hook':True,'img':'d','cam':(0.47,0.40,0.24),'t':['借金の','フェルメール'],'size':170,'en':'Vermeer, in debt.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['借金と子ども11人','フェルメールの最期'],'size':150,'en':'Vermeer’s end: debts and eleven children.'},
+ {'hook':True,'img':'d','cam':(0.47,0.40,0.24),'t':['借金と子ども11人','フェルメールの最期'],'size':150,'en':'Vermeer’s end: debts and eleven children.'},
  {'img':'d','cam':(0.40,0.40,0.42),'t':['死の約200年後、この画家の名を','世界に広めた人がいる。'],'hook':True,'en':'About 200 years after his death, someone made his name known to the world.'},
  {'img':'d','cam':(0.14,0.40,0.34),'t':['窓辺は、こんなに静か。','画家の家計は、そうではなかった。'],'en':'The window light is so calm. His household finances were not.'},
  {'img':'d','cam':(0.50,0.36,0.30),'t':['副業は画商。1670年代の不況で、','その仕事も傾いた。'],'en':'He also worked as an art dealer, and that business faltered in the slump of the 1670s.'},

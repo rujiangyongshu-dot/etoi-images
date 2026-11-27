@@ -1,3 +1,4 @@
+# 出し直し（11/27）：最初の一言を「ピカソが疑われた モナ・リザ盗難」に（有名な名前2つ×事件）。部屋の画像の上のナレーションは外した（新しい一言の音声はMacで作る必要があるため）。
 # v4（11/24）構成：部屋の画像（約1秒）→ 絵の顔の寄り（同じ一言）→ 本体。：選び直した12作品の1本目。ダ・ヴィンチ《モナ・リザ》×1911年の盗難事件。ナレーション：VOICEVOX 青山龍星（しっとり）
 IMAGES={'room':'../../rooms/monalisa/room.jpg','m':'../../works/monalisa/src.jpg'}
 CATEGORY='気づかれない価値'
@@ -10,8 +11,8 @@ HSIZE=78
 TSIZE=60
 HOOK_Y=0.62
 SLIDES=[
- {'img':'room','cam':(0.5,0.52,1.0),'t':['盗まれた','モナ・リザ'],'size':175,'en':'The stolen Mona Lisa.','vo':'盗まれた、モナ・リザ。','vo_free':True},
- {'img':'m','cam':(0.44,0.34,0.34),'hook':True,'t':['盗まれた','モナ・リザ'],'size':175,'en':'The stolen Mona Lisa.'},
+ {'img':'room','cam':(0.5,0.52,1.0),'t':['ピカソが疑われた','モナ・リザ盗難'],'size':150,'en':'The Mona Lisa theft: even Picasso was a suspect.'},
+ {'img':'m','cam':(0.44,0.34,0.34),'hook':True,'t':['ピカソが疑われた','モナ・リザ盗難'],'size':150,'en':'The Mona Lisa theft: even Picasso was a suspect.'},
  {'img':'m','cam':(0.44,0.33,0.40),'hook':True,'t':['この絵が世界一になったのは、','ある「事件」のせいだった。'],'en':'It became the most famous painting because of a crime.','vo':'この絵が世界一有名になったのは、ある事件がきっかけでした。'},
  {'img':'m','cam':(0.50,0.50,1.00),'t':['1911年8月21日、月曜日。','ルーヴル美術館は休館日。'],'en':'Monday, August 21, 1911. The Louvre was closed.','vo':'1911年8月21日、月曜日。ルーヴル美術館は、休館日でした。'},
  {'img':'m','cam':(0.44,0.30,0.30),'t':['その朝、この絵は','壁から消えた。'],'en':'That morning, the painting vanished from the wall.','vo':'その朝、この絵は、壁から消えました。'},
