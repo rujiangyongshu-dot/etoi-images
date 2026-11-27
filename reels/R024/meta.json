@@ -1,0 +1,25 @@
+{
+ "format": "V4",
+ "format_name": "1枚の謎が解ける物語（v4・部屋→絵→本体・ナレーション）",
+ "work": "monalisa",
+ "narration": true,
+ "hook": "盗まれたモナ・リザ",
+ "hook_candidates": [
+  "盗まれたモナ・リザ",
+  "盗まれて、世界一有名になった絵",
+  "モナ・リザは、盗まれる前は無名だった",
+  "空っぽの壁に、行列ができた",
+  "犯人は、ケースを作った男"
+ ],
+ "caption": "盗まれたモナ・リザ。\n\n1911年8月21日、休館日のルーヴル美術館から、レオナルド・ダ・ヴィンチ《モナ・リザ》が消えました。詩人アポリネールが逮捕され、ピカソまで取り調べを受けます。再開した美術館には、何もない壁を見ようと何千人もが押し寄せ、その中には作家カフカもいました。犯人は、この絵の保護ケースを作った元職員。2年以上パリの部屋に隠し、イタリアで売ろうとして捕まります。戻ってきたとき、この絵は世界でいちばん有名な絵になっていました。\n\nいなくなって初めて、その価値に気づかれることがある。\n頑張りに、まだ誰も気づいていない人へ。送ってあげてください。\n💬 あなたの「気づかれていない頑張り」は何ですか？\n\n🌐 English\nThe stolen Mona Lisa. In 1911 it vanished from the Louvre; thousands, including Kafka, came to stare at the empty wall. The thief had built its protective case. When it came back, it was the most famous painting in the world.\n\nナレーション：VOICEVOX:青山龍星\n\n#モナリザ #名画 #名画解説 #仕事の悩み #ダヴィンチ",
+ "audio_ids": [
+  "1214305965663814",
+  "412971409445783"
+ ],
+ "audio_titles": [
+  "Debussy Clair de Lune / Hugh Sung",
+  "（R002と同じ曲）"
+ ],
+ "hypothesis": "再投稿（R018は11/25朝に配信がほぼ止まり、オーナー判断でアーカイブ）：1週間あけて同じ内容を出し直すと、通常どおり約110人以上に配信されるか",
+ "cover": "cover.jpg"
+}
