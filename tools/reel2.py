@@ -134,6 +134,19 @@ if any(x.get('vo') for x in shots):  # ナレーション（v4・2026-11-24）�
     buf = np.clip(buf / (np.abs(buf).max() + 1) * 26000, -32768, 32767).astype(np.int16)
     VO = OUT + '.vo.wav'; w_ = wave.open(VO, 'wb'); w_.setnchannels(1); w_.setsampwidth(2); w_.setframerate(sr_); w_.writeframes(buf.tobytes()); w_.close()
 total = sum(DUR) + END
+if getattr(C, 'IMPACT', True):  # 2026-11-28 オーナー：最初の0.5〜1秒で音で手を止める。品のある低い一音（自作の合成音・権利フリー）を冒頭に入れる
+    import wave
+    sri = 44100; n = int(total * sri) + sri; buf2 = np.zeros(n, np.float32)
+    if VO:
+        w_ = wave.open(VO); sv = w_.getframerate(); v = np.frombuffer(w_.readframes(w_.getnframes()), np.int16).astype(np.float32)
+        v = np.interp(np.arange(0, len(v) * sri / sv) * sv / sri, np.arange(len(v)), v); buf2[:min(n, len(v))] += v[:n]
+    t = np.arange(int(1.6 * sri)) / sri
+    hit = (np.sin(2 * np.pi * 49 * t) * np.exp(-2.6 * t) + 0.55 * np.sin(2 * np.pi * 98 * t) * np.exp(-3.5 * t)
+           + 0.22 * (np.sin(2 * np.pi * 392 * t) + 0.45 * np.sin(2 * np.pi * 784 * t) + 0.2 * np.sin(2 * np.pi * 1176 * t)) * np.exp(-2.2 * t))
+    hit *= np.minimum(1, t / 0.008)
+    buf2[:len(hit)] += hit / np.abs(hit).max() * 15000
+    buf2 = np.clip(buf2, -32768, 32767).astype(np.int16)
+    VO = OUT + '.mix.wav'; w_ = wave.open(VO, 'wb'); w_.setnchannels(1); w_.setsampwidth(2); w_.setframerate(sri); w_.writeframes(buf2.tobytes()); w_.close()
 ff = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                        *(['-i', VO] if VO else ['-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=stereo']), '-shortest', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20',
                        '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart', OUT], stdin=subprocess.PIPE)
