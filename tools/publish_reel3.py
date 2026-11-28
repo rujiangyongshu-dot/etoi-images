@@ -1,14 +1,15 @@
 """実験リール（reels/RID/ に cfg.py・meta.json、動画は reels/RID.mp4）を、Instagram の音楽を付けて公開する。
 usage: python3 publish_reel3.py TOKEN_FILE RID [--publish]
   meta.json: {"caption": "...", "audio_ids": ["id1","id2"], "format": "F01", ...}
-  リールのタブだけに表示（share_to_feed=false）。曲が付かなければ公開しない。1回の実行で公開は1本。
+  2026-11-28 オーナー決定：メイングリッドにも表示（share_to_feed=true。--nofeed で従来のリールタブのみ）。
+  --trial=MANUAL のときはトライアル（フォロワー外だけ）。トライアルはストーリーを出さない。曲が付かなければ公開しない。1回の実行で公開は1本。
 """
 import sys, json, time, urllib.request, urllib.parse
 tok = open(sys.argv[1]).read().strip(); RID = sys.argv[2]; PUB = '--publish' in sys.argv
 # 2026-11-28：トライアルリール（フォロワー外だけに試す）。--trial=SS_PERFORMANCE（伸びたら自動で全員に）／--trial=MANUAL
 TRIAL = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--trial=')), None)
-# フィード（メイングリッド）にも出すか。--feed で true（オーナー決定待ち。既定は従来どおりリールタブのみ）
-FEED = 'true' if '--feed' in sys.argv else 'false'
+# 2026-11-28 オーナー決定：リールはメイングリッドにも出す（既定 true）
+FEED = 'false' if '--nofeed' in sys.argv else 'true'
 IG = '17841474297409504'; G = 'https://graph.facebook.com/v25.0/'
 RAW = 'https://raw.githubusercontent.com/rujiangyongshu-dot/etoi-images/main/'
 def call(path, data=None):
@@ -52,7 +53,7 @@ except Exception as e:
 if prob: raise SystemExit(json.dumps({'error': 'rule_gate', 'rid': RID, 'problems': prob}, ensure_ascii=False))
 c = used = None; errs = []
 for aid in meta['audio_ids']:
-    d = {'media_type': 'REELS', 'video_url': RAW + f'reels/{RID}.mp4', 'caption': caption, 'share_to_feed': FEED, **({'trial_params': json.dumps({'graduation_strategy': TRIAL})} if TRIAL else {}),
+    d = {'media_type': 'REELS', 'video_url': RAW + f'reels/{RID}.mp4', 'caption': caption, **({} if TRIAL else {'share_to_feed': FEED}), **({'trial_params': json.dumps({'graduation_strategy': TRIAL})} if TRIAL else {}),
          'audio_configuration': json.dumps({'audio_id': str(aid), 'audio_volume': 70 if meta.get('narration') else 100, 'video_volume': 100})}
     if meta.get('cover'): d['cover_url'] = RAW + f'reels/{RID}/' + meta['cover']
     r = call(IG + '/media', d)
@@ -68,8 +69,8 @@ if not PUB: print(json.dumps({'reel': {'dry_run': c, 'audio_id': used}})); raise
 p = call(IG + '/media_publish', {'creation_id': c})
 if 'id' not in p: raise SystemExit(json.dumps({'error': p}, ensure_ascii=False))
 m = p['id']; time.sleep(5); info = call(m + '?fields=permalink,media_audio_type')
-story = {'status': 'failed'}
-for _ in range(2):
+story = {'status': 'skipped_trial'} if TRIAL else {'status': 'failed'}
+for _ in (range(0) if TRIAL else range(2)):
     r = call(IG + '/media', {'image_url': RAW + f'reels/{RID}/story.jpg', 'media_type': 'STORIES'})
     if 'id' in r:
         for _ in range(30):

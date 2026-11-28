@@ -64,6 +64,8 @@ def endcard(k):
 shots = [s for s in C.SLIDES if not s.get('mock')]
 mock = next((s for s in C.SLIDES if s.get('mock')), shots[0])
 DUR = list(getattr(C, 'DUR', None) or ([3.4] + [3.6] * (len(shots) - 2) + [4.2]))
+# 2026-11-28 オーナー決定：参考リールに合わせてテンポ1.1倍（2コマ目以降の尺を約1割短く。1コマ目の部屋の画像はそのまま）
+PACE = getattr(C, 'PACE', 0.9); DUR = [d if i == 0 else round(d * PACE, 2) for i, d in enumerate(DUR)]
 XF = getattr(C, 'XF', 0.5); END = getattr(C, 'END', 3.0); ZOOM = getattr(C, 'ZOOM', 1.18)
 ease = lambda t: t * t * (3 - 2 * t)
 layers = []
