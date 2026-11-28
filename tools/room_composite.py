@@ -8,7 +8,10 @@ ROUND = '--round' in sys.argv  # 円形の絵（トンド）：4点の外接四�
 zones = [tuple(map(int, z.split(','))) for z in sys.argv[5:] if z != '--round']
 bg = Image.open(room).convert('RGB'); W, H = bg.size
 dst = [tuple(map(float, p.split(','))) for p in quad.split()]
-src = Image.open(srcp).convert('RGB'); sw, sh = src.size
+src = Image.open(srcp).convert('RGB')
+_g = np.asarray(src.convert('L'), float); _r = np.where(_g.mean(1) > 15)[0]; _c = np.where(_g.mean(0) > 15)[0]  # 黒い余白を自動で切る
+if len(_r) and len(_c): src = src.crop((int(_c[0]) + 4, int(_r[0]) + 4, int(_c[-1]) - 4, int(_r[-1]) - 4))
+sw, sh = src.size
 tw = ((dst[1][0]-dst[0][0]) + (dst[2][0]-dst[3][0])) / 2; th = ((dst[3][1]-dst[0][1]) + (dst[2][1]-dst[1][1])) / 2
 tgt = tw / th
 if sw / sh > tgt: cw = int(sh * tgt); x0 = (sw - cw) // 2; src = src.crop((x0, 0, x0 + cw, sh))
