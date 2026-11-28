@@ -5,6 +5,10 @@ usage: python3 publish_reel3.py TOKEN_FILE RID [--publish]
 """
 import sys, json, time, urllib.request, urllib.parse
 tok = open(sys.argv[1]).read().strip(); RID = sys.argv[2]; PUB = '--publish' in sys.argv
+# 2026-11-28：トライアルリール（フォロワー外だけに試す）。--trial=SS_PERFORMANCE（伸びたら自動で全員に）／--trial=MANUAL
+TRIAL = next((a.split('=', 1)[1] for a in sys.argv if a.startswith('--trial=')), None)
+# フィード（メイングリッド）にも出すか。--feed で true（オーナー決定待ち。既定は従来どおりリールタブのみ）
+FEED = 'true' if '--feed' in sys.argv else 'false'
 IG = '17841474297409504'; G = 'https://graph.facebook.com/v25.0/'
 RAW = 'https://raw.githubusercontent.com/rujiangyongshu-dot/etoi-images/main/'
 def call(path, data=None):
@@ -48,7 +52,7 @@ except Exception as e:
 if prob: raise SystemExit(json.dumps({'error': 'rule_gate', 'rid': RID, 'problems': prob}, ensure_ascii=False))
 c = used = None; errs = []
 for aid in meta['audio_ids']:
-    d = {'media_type': 'REELS', 'video_url': RAW + f'reels/{RID}.mp4', 'caption': caption, 'share_to_feed': 'false',
+    d = {'media_type': 'REELS', 'video_url': RAW + f'reels/{RID}.mp4', 'caption': caption, 'share_to_feed': FEED, **({'trial_params': json.dumps({'graduation_strategy': TRIAL})} if TRIAL else {}),
          'audio_configuration': json.dumps({'audio_id': str(aid), 'audio_volume': 70 if meta.get('narration') else 100, 'video_volume': 100})}
     if meta.get('cover'): d['cover_url'] = RAW + f'reels/{RID}/' + meta['cover']
     r = call(IG + '/media', d)
